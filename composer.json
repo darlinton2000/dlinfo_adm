@@ -1,0 +1,17 @@
+{
+    "description": "Projeto Adm DL Gestor",
+    "authors": [{
+        "name": "Darlinton Luis Siqueira",
+        "email": "darlinton2000@gmail.com"
+    }],
+    "autoload": {
+        "psr-4": {
+            "Core\\": "core",
+            "App\\": "app",
+            "Adms\\": "app/adms"
+        }
+    },
+    "require": {
+        "phpmailer/phpmailer": "^6.6"
+    }
+}
