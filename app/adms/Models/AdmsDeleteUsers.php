@@ -18,8 +18,11 @@ class AdmsDeleteUsers
     /** @var array|null $resultBd Recebe os registros do banco de dados */
     private array|null $resultBd;
 
-    /** @var string $directory Recebe o endereço para apagar a imagem */
-    private string $directory;
+    /** @var string $delDirectory Recebe o endereço para apagar o diretório */
+    private string $delDirectory;
+
+    /** @var string $delImg Recebe o endereço para apagar a imagem */
+    private string $delImg;
 
     /**
      * @return bool Retorna true quando executar o processo com sucesso e false quando houver erro
@@ -29,6 +32,15 @@ class AdmsDeleteUsers
         return $this->result;
     }
 
+    /**
+     * Responsável por excluir um determinando usuário no banco de dados.
+     * Se existir algum diretório ou imagem do usuário irá ser excluído quando instanciar o método 'deleteImg'
+     * Retorna TRUE se conseguir excluir.
+     * Retorna FALSE se não conseguir excluir.
+     * 
+     * @param integer $id
+     * @return void
+     */
     public function deleteUser(int $id): void
     {
         $this->id = (int) $id;
@@ -38,6 +50,7 @@ class AdmsDeleteUsers
             $deleteUser->exeDelete("adms_users", "WHERE id=:id", "id={$this->id}");
 
             if ($deleteUser->getResult()){
+                $this->deleteImg();
                 $_SESSION['msg'] = "<p style='color: green;'>Erro: Usuário apagado com sucesso!</p>";
                 $this->result = true;
             } else {
@@ -49,6 +62,11 @@ class AdmsDeleteUsers
         }
     }
 
+    /**
+     * Retorna as informações do usuário como o id e a imagem.
+     *
+     * @return boolean
+     */
     private function viewUser(): bool
     {
         $viewUser = new \App\adms\Models\helper\AdmsRead();
@@ -63,10 +81,24 @@ class AdmsDeleteUsers
         }   
     }
 
+    /**
+     * Responsável por excluir a imagem se existir e posteriormente o diretório
+     *
+     * @return void
+     */
     private function deleteImg(): void
     {
         if ((!empty($this->resultBd[0]['image'])) or ($this->resultBd[0]['image'] != null)){
-            $this->directory = "app/adms/assets/image/users/" . $this->data['id'] . "/";
+            $this->delDirectory = "app/adms/assets/image/users/" . $this->resultBd[0]['id'];
+            $this->delImg = $this->delDirectory . "/" . $this->resultBd[0]['image'];
+
+            if (file_exists($this->delImg)){
+                unlink($this->delImg);
+            }
+
+            if (file_exists($this->delDirectory)){
+                rmdir($this->delDirectory);
+            }
         }
     }
 }
