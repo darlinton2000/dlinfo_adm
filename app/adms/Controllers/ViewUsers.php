@@ -2,6 +2,10 @@
 
 namespace App\adms\Controllers;
 
+/**
+ * Controller da página visualizar usuarios
+ * @author Darlinton Luis Siqueira <darlinton2000@gmail.com>
+ */
 class ViewUsers
 {   
     /** @var array|string|null $data Recebe os dados que devem ser enviados para a VIEW */

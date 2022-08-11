@@ -17,12 +17,19 @@ if (isset($_SESSION['msg'])){
 
 if (!empty($this->data['viewUser'])){
     extract($this->data['viewUser'][0]);
+
+    //Verificando se existe uma imagem de perfil do usuário, se não existir irá atribuir uma imagem padrão
+    if ((!empty($image)) and (file_exists("app/adms/assets/image/users/$id/$image"))){
+        echo "<img src='" . URLADM . "app/adms/assets/image/users/$id/$image' width='100' height='100'><br><br>";
+    } else {
+        echo "<img src='" . URLADM . "app/adms/assets/image/users/icon_user.png' width='100' height='100'><br><br>";
+    }
+
     echo "ID: $id <br>";
     echo "Nome: $name_usr <br>";
     echo "Apelido: $nickname <br>";
     echo "E-mail: $email <br>";
     echo "Usuário: $user <br>";
-    echo "Imagem: $image <br>";
     echo "Situação do Usuário: <span style='color: $color;'>$name_sit</span><br>";
     echo "Cadastrado: " . date('d/m/Y H:i:s', strtotime($created)). " <br>";
     echo "Editado: ";
