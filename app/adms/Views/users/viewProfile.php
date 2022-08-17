@@ -3,8 +3,8 @@
 echo "<h2>Perfil</h2>";
 
 if (!empty($this->data['viewProfile'])){
-    /* echo "<a href='".URLADM."edit-users/index/" . $this->data['viewProfile'][0]['id'] . "'>Editar</a><br>";
-    echo "<a href='".URLADM."edit-users-password/index/" . $this->data['viewProfile'][0]['id'] . "'>Editar Senha</a><br>";
+    echo "<a href='".URLADM."edit-profile/index'>Editar</a><br>";
+    /* echo "<a href='".URLADM."edit-users-password/index/" . $this->data['viewProfile'][0]['id'] . "'>Editar Senha</a><br>";
     echo "<a href='".URLADM."edit-users-image/index/" . $this->data['viewProfile'][0]['id'] . "'>Editar Imagem</a><br>";
     echo "<a href='".URLADM."delete-users/index/" . $this->data['viewProfile'][0]['id'] . "'>Apagar</a><br><br>"; */
 }
