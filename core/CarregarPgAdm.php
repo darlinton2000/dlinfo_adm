@@ -76,13 +76,13 @@ class CarregarPgAdm
     }
 
     /**
-     * Verificar se a página é privada e chamar o método para verificar se o usuário está logado
+     * Verificar se a página é privada e chama o método para verificar se o usuário está logado
      *
      * @return void
      */
     private function pgPrivate(): void
     {
-        $this->listPgPrivate = ["Dashboard", "ListUsers", "ViewUsers", "AddUsers", "EditUsers", "EditUsersPassword", "EditUsersImage", "DeleteUsers", "ViewProfile", "EditProfile"];
+        $this->listPgPrivate = ["Dashboard", "ListUsers", "ViewUsers", "AddUsers", "EditUsers", "EditUsersPassword", "EditUsersImage", "DeleteUsers", "ViewProfile", "EditProfile", "EditProfilePassword"];
 
         if (in_array($this->urlController, $this->listPgPrivate)){
             $this->verifyLogin();
