@@ -1,3 +1,13 @@
+Sistema de Gestão de Dados - DLInfo ADM
+
+Desenvolvido através do Curso Celke de PHP Developer e algumas funcionalidades implementadas por mim.
+
+Linguagem de programação: PHP 8.1.5
+Banco de Dados: MariaDB
+Bibliotecas: PHPMailer 6.6.3
+
+#########################################################################################################
+
 Necessário verificar se o GD está ativo no servidor.
 
 Criar um arquivo com o código abaixo e teste.
