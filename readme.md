@@ -1,7 +1,5 @@
 <h2>Sistema de Gestão de Dados - DLInfo ADM</h2>
 
-Desenvolvido através do Curso Celke de PHP Developer e algumas funcionalidades implementadas por mim.
-
 Linguagem de programação: PHP 8.1.5<br>
 Banco de Dados: MariaDB<br>
 Bibliotecas: PHPMailer 6.6.3<br>
