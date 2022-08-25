@@ -400,24 +400,6 @@ if (formUpdatePass) {
     });
 }
 
-//Formulário Editar Imagem de perfil
-const formEditProfImage = document.getElementById("form-edit-prof-img");
-if (formEditProfImage) {
-    formEditProfImage.addEventListener("submit", async (e) => {
-        //Receber o valor do campo
-        var new_image = document.querySelector("#new_image").value;
-        //Verificar se o campo esta vazio
-        if (new_image === ""){
-            e.preventDefault();
-            document.getElementById("msg").innerHTML = "<p style='color: red;'>Erro: Necessário selecionar uma imagem!</p>";
-            return;
-        } else {
-            document.getElementById("msg").innerHTML = "<p></p>";
-            return;
-        }
-    });
-}
-
 //Formulário Editar Senha Perfil
 const formEditProfPass = document.getElementById("form-edit-prof-pass");
 if (formEditProfPass) {
@@ -476,23 +458,57 @@ if (formEditUserImg) {
     });
 }
 
+//Formulário Editar Imagem de perfil
+const formEditProfImage = document.getElementById("form-edit-prof-img");
+if (formEditProfImage) {
+    formEditProfImage.addEventListener("submit", async (e) => {
+        //Receber o valor do campo
+        var new_image = document.querySelector("#new_image").value;
+        //Verificar se o campo esta vazio
+        if (new_image === ""){
+            e.preventDefault();
+            document.getElementById("msg").innerHTML = "<p style='color: red;'>Erro: Necessário selecionar uma imagem!</p>";
+            return;
+        } else {
+            document.getElementById("msg").innerHTML = "<p></p>";
+            return;
+        }
+    });
+}
+
 //Função para validar extensão da imagem
-function inputFileValImg(){
+function inputFileValImg() {
     //Receber o valor do campo
     var new_image = document.querySelector("#new_image");
 
-    var filepath = new_image.value;
+    var filePath = new_image.value;
 
-    var allowedExtensions = /(\.jpg\.jpeg|\.png)$/i;
+    var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
 
-    if (!allowedExtensions.exec(filepath)){
+    if (!allowedExtensions.exec(filePath)) {
         new_image.value = '';
-        document.getElementById("msg").innerHTML = "<p style='color: red;'>Erro: Necessário selecionar uma imagem JPG ou PNG!</p>";
+        document.getElementById("msg").innerHTML = "<p style='color: #f00;'>Erro: Necessário selecionar uma imagem JPG ou PNG!</p>";
         return;
     } else {
+        previewImage(new_image);
         document.getElementById("msg").innerHTML = "<p></p>";
         return;
     }
+}
+
+//Função para carregar a pré-imagem
+function previewImage(new_image) {
+    if ((new_image.files) && (new_image.files[0])) {
+        // FileReader() - ler o conteúdo dos arquivos
+        var reader = new FileReader();
+        // onload - disparar um evento quando qualquer elemento tenha sido carregado
+        reader.onload = function(e) {
+            document.getElementById('preview-img').innerHTML = "<img src='" + e.target.result + "' alt='Imagem' style='width: 100px;'>";
+        }
+    }
+
+    // readAsDataURL - Retorna os dados do formato blob como uma URL de dados - Blob representa um arquivo
+    reader.readAsDataURL(new_image.files[0]);
 }
 
 /* Fim da validação dos formulários */ 
