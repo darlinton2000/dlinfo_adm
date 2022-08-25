@@ -24,11 +24,11 @@ if (isset($_SESSION['msg'])) {
 
 <span id="msg"></span>
 
-<form method="POST" action="" id="form-edit-user" enctype="multipart/form-data">    
+<form method="POST" action="" id="form-edit-user-img" enctype="multipart/form-data">    
     <input type="hidden" name="id" id="id" value="<?php if (isset($valorForm['id'])) { echo $valorForm['id']; }?>">
 
     <label>Imagem:<span style="color: red;">*</span> 300x300</label>
-    <input type="file" name="new_image" id="new_image"><br><br>
+    <input type="file" name="new_image" id="new_image" onchange="inputFileValImg()" required><br><br>
 
     <span style="color: red;">* Campo Obrigatório</span><br><br>
     

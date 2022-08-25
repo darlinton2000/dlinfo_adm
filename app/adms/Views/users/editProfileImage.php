@@ -23,7 +23,7 @@ if (isset($_SESSION['msg'])) {
 
 <form method="POST" action="" id="form-edit-prof-img" enctype="multipart/form-data">
     <label>Imagem:<span style="color: red;">*</span> 300x300</label>
-    <input type="file" name="new_image" id="new_image"><br><br>
+    <input type="file" name="new_image" id="new_image" onchange="inputFileValImg()" required><br><br>
 
     <span style="color: red;">* Campo Obrigatório</span><br><br>
     
