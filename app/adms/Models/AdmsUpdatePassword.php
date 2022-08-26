@@ -2,6 +2,11 @@
 
 namespace App\adms\Models;
 
+if (!defined('C8L6K7E')){
+    header("Location: /");
+    die("Erro: Página não encontrada<br>");
+}
+
 /**
  * Confirmar a chave atualizar senha. Cadastrar nova senha.
  *

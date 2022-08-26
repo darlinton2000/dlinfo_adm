@@ -2,6 +2,11 @@
 
 namespace App\adms\Controllers;
 
+if (!defined('C8L6K7E')){
+    header("Location: /");
+    die("Erro: Página não encontrada<br>");
+}
+
 /**
  * Controller da página editar nova senha
  * @author Darlinton Luis Siqueira <darlinton2000@gmail.com>

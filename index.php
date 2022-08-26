@@ -6,6 +6,9 @@ session_start();
 //Limpar o buffer de saída
 ob_start();
 
+//Constante de segurança dos diretórios do código fonte 
+define('C8L6K7E', true);
+
 //Carrega o Composer
 require './vendor/autoload.php';
 

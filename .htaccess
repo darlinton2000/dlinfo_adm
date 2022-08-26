@@ -26,3 +26,9 @@ RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
 
 # index.php?url=users/index&?id=2&sit=2
 # http://localhost/Adm/view-users/index?id=2&sit=2
+
+# Quando houver o erro 403 redirecionar o usuario
+#ErroDocument 403 https://google.com.br
+
+# Bloquear a opção de listar os arquivos do diretório
+Options -Indexes

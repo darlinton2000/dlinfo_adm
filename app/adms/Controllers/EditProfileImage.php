@@ -2,6 +2,12 @@
 
 namespace App\adms\Controllers;
 
+if (!defined('C8L6K7E')){
+    header("Location: /");
+    die("Erro: Página não encontrada<br>");
+}
+
+
 /**
  * Controller da página editar imagem do perfil
  * @author Darlinton Luis Siqueira <darlinton2000@gmail.com>

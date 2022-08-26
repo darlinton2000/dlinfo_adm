@@ -2,6 +2,11 @@
 
 namespace App\adms\Models\helper;
 
+if (!defined('C8L6K7E')){
+    header("Location: /");
+    die("Erro: Página não encontrada<br>");
+}
+
 /**
  * Classe genérica para validar a extensão da imagem
  * 

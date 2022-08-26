@@ -1,4 +1,10 @@
 <?php 
+
+if (!defined('C8L6K7E')){
+    header("Location: /");
+    die("Erro: Página não encontrada<br>");
+}
+
 if (isset($this->data['form'])){
     $valorForm = $this->data['form'];
 }
@@ -11,6 +17,7 @@ if (isset($this->data['form'][0])){
 <h1>Editar Usuário</h1>
 
 <?php
+
 echo "<a href='".URLADM."list-users/index'>Listar</a><br>";
 if (isset($valorForm['id'])) {
 echo "<a href='".URLADM."view-users/index/" . $valorForm['id'] . "'>Visualizar</a><br><br>";

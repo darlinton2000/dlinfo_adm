@@ -2,6 +2,16 @@
 
 namespace App\adms\Models\helper;
 
+if (!defined('C8L6K7E')){
+    header("Location: /");
+    die("Erro: Página não encontrada<br>");
+}
+
+/**
+ * Classe genêrica para validar os campos
+ *
+ * @author Darlinton Luis Siqueira <darlinton2000@gmail.com>
+ */
 class AdmsValEmptyField
 {
     private array|null $data;

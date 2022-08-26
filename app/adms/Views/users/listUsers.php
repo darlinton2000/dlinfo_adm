@@ -1,5 +1,10 @@
 <?php 
 
+if (!defined('C8L6K7E')){
+    header("Location: /");
+    die("Erro: Página não encontrada<br>");
+}
+
 echo "<h2>Listar Usuários</h2>";
 
 echo "<a href='" . URLADM . "add-users/index'>Cadastrar</a><br><br>"; 
