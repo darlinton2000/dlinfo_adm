@@ -23,12 +23,6 @@ class AdmsDeleteSitsUsers
     /** @var array|null $resultBd Recebe os registros do banco de dados */
     private array|null $resultBd;
 
-    /** @var string $delDirectory Recebe o endereço para apagar o diretório */
-    private string $delDirectory;
-
-    /** @var string $delImg Recebe o endereço para apagar a imagem */
-    private string $delImg;
-
     /**
      * @return bool Retorna true quando executar o processo com sucesso e false quando houver erro
      */
@@ -49,7 +43,7 @@ class AdmsDeleteSitsUsers
     {
         $this->id = (int) $id;
 
-        if ($this->viewSit()){
+        if (($this->viewSit()) and ($this->checkStatusUser())){
             $deleteSitUser = new \App\adms\Models\helper\AdmsDelete();
             $deleteSitUser->exeDelete("adms_sits_users ", "WHERE id=:id", "id={$this->id}");
 
@@ -82,5 +76,21 @@ class AdmsDeleteSitsUsers
             $_SESSION['msg'] = "<p style='color: red;'>Erro: Situação não encontrada!</p>";
             return false;
         }   
+    }
+
+    /**
+     * Verifica se a situação está sendo utilizada no banco de dados
+     * @return boolean
+     */
+    private function checkStatusUser(): bool
+    {
+        $viewUserAdd = new \App\adms\Models\helper\AdmsRead();
+        $viewUserAdd->fullRead("SELECT id FROM adms_users WHERE adms_sits_user_id =:adms_sits_user_id LIMIT :limit", "adms_sits_user_id={$this->id}&limit=1");
+        if ($viewUserAdd->getResult()){
+            $_SESSION['msg'] = "<p style='color: red;'>Erro: Situação não pode ser apagada, há usuários cadastrados com essa situação!</p>";
+            return false;
+        } else {    
+            return true;
+        }
     }
 }
