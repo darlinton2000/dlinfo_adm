@@ -39,7 +39,13 @@ class AdmsListUsers
     public function listUsers(): void
     {
         $listUsers = new \App\adms\Models\helper\AdmsRead();
-        $listUsers->fullRead("SELECT id, name, email FROM adms_users ORDER BY id DESC");
+        $listUsers->fullRead("SELECT usr.id, usr.name AS name_usr, usr.email, usr.adms_sits_user_id, 
+                                             sit.name AS name_sit,
+                                             col.color
+                                             FROM adms_users AS usr
+                                             INNER JOIN adms_sits_users AS sit ON sit.id = usr.adms_sits_user_id
+                                             INNER JOIN adms_colors AS col ON col.id = sit.adms_color_id
+                                             ORDER BY usr.id DESC");
 
         $this->resultBd = $listUsers->getResult();
         if ($this->resultBd){
