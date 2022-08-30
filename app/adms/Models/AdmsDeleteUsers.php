@@ -38,7 +38,7 @@ class AdmsDeleteUsers
     }
 
     /**
-     * Responsável por excluir um determinando usuário no banco de dados.
+     * Responsável por excluir um determinado usuário no banco de dados.
      * Se existir algum diretório ou imagem do usuário irá ser excluído quando instanciar o método 'deleteImg'
      * Retorna TRUE se conseguir excluir.
      * Retorna FALSE se não conseguir excluir.
@@ -56,7 +56,7 @@ class AdmsDeleteUsers
 
             if ($deleteUser->getResult()){
                 $this->deleteImg();
-                $_SESSION['msg'] = "<p style='color: green;'>Erro: Usuário apagado com sucesso!</p>";
+                $_SESSION['msg'] = "<p style='color: green;'>Usuário apagado com sucesso!</p>";
                 $this->result = true;
             } else {
                 $_SESSION['msg'] = "<p style='color: red;'>Erro: Usuário não apagado com sucesso!</p>";

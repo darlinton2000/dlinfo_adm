@@ -8,10 +8,10 @@ if (!defined('C8L6K7E')){
 }
 
 /**
- * Controller da página apagar usuário
+ * Controller da página apagar situação
  * @author Darlinton Luis Siqueira <darlinton2000@gmail.com>
  */
-class DeleteUsers
+class DeleteSitsUsers
 {   
     /** @var int|string|null $id Recebe o id do registro */
     private int|string|null $id;
@@ -20,13 +20,13 @@ class DeleteUsers
     {   
         if (!empty($id)){
             $this->id = (int) $id;
-            $deleteUser = new \App\adms\Models\AdmsDeleteUsers();
-            $deleteUser->deleteUser($this->id);
+            $deleteSitUser = new \App\adms\Models\AdmsDeleteSitsUsers();
+            $deleteSitUser->deleteSitUser($this->id);
         } else {
-            $_SESSION['msg'] = "<p style='color: red;'>Erro: Necessário selecionar um usuário!</p>";
+            $_SESSION['msg'] = "<p style='color: red;'>Erro: Necessário selecionar uma situação!</p>";
         }
 
-        $urlRedirect = URLADM . "list-users/index";
+        $urlRedirect = URLADM . "list-sits-users/index";
         header("Location: $urlRedirect");
     }
 }
