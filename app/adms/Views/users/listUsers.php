@@ -25,3 +25,6 @@ foreach ($this->data['listUsers'] as $user){
     echo "<a href='".URLADM."delete-users/index/$id'>Apagar</a><br>";
     echo "<hr>";
 }
+
+echo $this->data['pagination'];
+echo "Total de Registros: <b> {$_SESSION['total_registro']}</b><br>";
