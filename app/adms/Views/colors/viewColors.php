@@ -10,7 +10,7 @@ echo "<h2>Detalhes da Cor</h2>";
 echo "<a href='".URLADM."list-colors/index'>Listar</a><br>";
 if (!empty($this->data['viewColor'])){
 echo "<a href='".URLADM."edit-colors/index/" . $this->data['viewColor'][0]['id'] . "'>Editar</a><br>";
-echo "<a href='".URLADM."delete-colors/index/" . $this->data['viewColor'][0]['id'] . "'>Apagar</a><br><br>";
+echo "<a href='".URLADM."delete-colors/index/" . $this->data['viewColor'][0]['id'] . "' onclick='return confirm(\"Tem certeza que deseja excluir o registro?\")'>Apagar</a><br><br>";
 }
 
 if (isset($_SESSION['msg'])){

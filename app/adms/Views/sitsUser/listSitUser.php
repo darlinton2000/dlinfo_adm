@@ -20,7 +20,7 @@ foreach ($this->data['listSitsUsers'] as $user){
     echo "Nome: <span style='color: $color;'>$name_sit</span><br>";
     echo "<a href='".URLADM."view-sits-users/index/$id'>Visualizar</a><br>";
     echo "<a href='".URLADM."edit-sits-users/index/$id'>Editar</a><br>";
-    echo "<a href='".URLADM."delete-sits-users/index/$id'>Apagar</a><br>";
+    echo "<a href='".URLADM."delete-sits-users/index/$id' onclick='return confirm(\"Tem certeza que deseja excluir o registro?\")'>Apagar</a><br>";
     echo "<hr>";
 }
 

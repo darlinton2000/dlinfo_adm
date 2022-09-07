@@ -22,7 +22,7 @@ echo "<a href='".URLADM."list-conf-emails/index'>Listar</a><br>";
 if (isset($valorForm['id'])) {
 echo "<a href='".URLADM."view-conf-emails/index/" . $valorForm['id'] . "'>Visualizar</a><br>";
 echo "<a href='".URLADM."edit-conf-emails-password/index/" . $valorForm['id'] . "'>Editar Senha</a><br>";
-echo "<a href='".URLADM."delete-conf-emails/index/" . $valorForm['id'] . "'>Apagar</a><br><br>";
+echo "<a href='".URLADM."delete-conf-emails/index/" . $valorForm['id'] . "' onclick='return confirm(\"Tem certeza que deseja excluir o registro?\")'>Apagar</a><br><br>";
 }
 
 if (isset($_SESSION['msg'])){

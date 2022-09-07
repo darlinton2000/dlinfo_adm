@@ -11,7 +11,7 @@ echo "<a href='".URLADM."list-conf-emails/index'>Listar</a><br>";
 if (!empty($this->data['viewConfEmail'])){
 echo "<a href='".URLADM."edit-conf-emails/index/" . $this->data['viewConfEmail'][0]['id'] . "'>Editar</a><br>";
 echo "<a href='".URLADM."edit-conf-emails-password/index/" . $this->data['viewConfEmail'][0]['id'] . "'>Editar Senha</a><br>";
-echo "<a href='".URLADM."delete-conf-emails/index/" . $this->data['viewConfEmail'][0]['id'] . "'>Apagar</a><br><br>";
+echo "<a href='".URLADM."delete-conf-emails/index/" . $this->data['viewConfEmail'][0]['id'] . "' onclick='return confirm(\"Tem certeza que deseja excluir o registro?\")'>Apagar</a><br><br>";
 }
 
 if (isset($_SESSION['msg'])){

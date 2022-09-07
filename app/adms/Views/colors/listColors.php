@@ -21,7 +21,7 @@ foreach ($this->data['listColors'] as $cor){
     echo "Nome: <span style='color: $color;'>$color</span><br>";
     echo "<a href='".URLADM."view-colors/index/$id'>Visualizar</a><br>";
     echo "<a href='".URLADM."edit-colors/index/$id'>Editar</a><br>";
-    echo "<a href='".URLADM."delete-colors/index/$id'>Apagar</a><br>";
+    echo "<a href='".URLADM."delete-colors/index/$id' onclick='return confirm(\"Tem certeza que deseja excluir o registro?\")'>Apagar</a><br>";
     echo "<hr>";
 }
 
