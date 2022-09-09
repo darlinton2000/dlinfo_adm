@@ -10,6 +10,6 @@ if (!defined('C8L6K7E')){
 <head>
     <meta charset="UTF-8">
     <title>DL Info - Administrativo</title>
-    <link rel="shortcut icon" href="<?php URLADM; ?>app/adms/assets/image/icon/favicon.ico">
+    <link rel="shortcut icon" href="<?php echo URLADM; ?>app/adms/assets/image/icon/favicon.ico">
 </head>
 <body>

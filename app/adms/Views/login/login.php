@@ -1,40 +1,52 @@
-<?php 
+<?php
 
-if (!defined('C8L6K7E')){
+if (!defined('C8L6K7E')) {
     header("Location: /");
     die("Erro: Página não encontrada<br>");
 }
 
-if (isset($this->data['form'])){
+if (isset($this->data['form'])) {
     $valorForm = $this->data['form'];
 }
 
-//Criptografar a senha
-//echo password_hash("123456a", PASSWORD_DEFAULT);
 ?>
 
-<h1>Área Restrita</h1>
+<div class="container-login">
+    <div class="wrapper-login">
 
-<?php
-if (isset($_SESSION['msg'])){
-    echo $_SESSION['msg'];
-    unset ($_SESSION['msg']);
-}
-?>
+        <div class="title">
+            <span>Área Restrita</span>
+        </div>
 
-<span id="msg"></span>
+        <?php
+        if (isset($_SESSION['msg'])) { 
+            echo $_SESSION['msg'];
+            unset($_SESSION['msg']);
+        }
+        ?>
 
-<form method="POST" action="" id="form-login">
-    <label>Usuário:</label>
-    <input type="text" name="user" id="user" placeholder="Digite o usuário" value="<?php if (isset($valorForm['user'])) { echo $valorForm['user']; }?>" required><br><br>
+        <span id="msg"></span>
 
-    <label>Senha:</label>
-    <input type="password" name="password" id="password" placeholder="Digite a senha" autocomplete="on" value="<?php if (isset($valorForm['password'])) { echo $valorForm['password']; }?>" required><br><br>
+        <form method="POST" action="" id="form-login" class="form-login">
+            <div class="row">
+                <i class="fa-solid fa-user"></i>
+                <input type="text" name="user" id="user" placeholder="Digite o usuário" value="<?php if (isset($valorForm['user'])) {echo $valorForm['user']; } ?>" required>
+            </div>
 
-    <button type="submit" name="SendLogin" value="Acessar">Acessar</button>
-</form>
+            <div class="row">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" name="password" id="password" placeholder="Digite a senha" autocomplete="on" value="<?php if (isset($valorForm['password'])) {echo $valorForm['password']; } ?>" required>
+            </div>
 
-<p><a href="<?php echo URLADM; ?>new-user/index">Cadastrar</a> - <a href="<?php echo URLADM; ?>recover-password/index">Esqueceu a senha?</a></p>
+            <div class="row button">
+                <button type="submit" name="SendLogin" value="Acessar">Acessar</button>
+            </div>
 
-Usuário: darlinton2000@gmail.com<br>
-Senha: 123456a<br>
+            <div class="signup-link">
+                <a href="<?php echo URLADM; ?>new-user/index">Cadastrar</a> - <a href="<?php echo URLADM; ?>recover-password/index">Esqueceu a senha?</a>
+            </div>
+
+        </form>
+
+    </div>
+</div>

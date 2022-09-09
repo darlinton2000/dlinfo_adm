@@ -56,6 +56,14 @@ class AdmsLogin
         }
     }
 
+    /**
+     * Metodo valida a situação do usuário
+     * Se a situação for 1, chama chama a função valPassword para validar a senha
+     * Se a situação for 3, retorna falso, pois, o usuario precisar confirmar o e-mail.
+     * Se a situação for 5, retorna falso, pois, o e-mail do usuário foi descadastrado.
+     * Se a situação for 2, retorna falso, pois, o e-mail esta inativo
+     * @return void
+     */
     private function valEmailPerm(): void
     {   
         if($this->resultBd[0]['adms_sits_user_id'] == 1){
