@@ -56,6 +56,8 @@ class EditColors
      */
     private function viewEditColor(): void
     {   
+        $this->data['sidebarActive'] = "list-colors";
+        
         $loadView = new \Core\ConfigView("adms/Views/colors/editColors", $this->data);
         $loadView->loadView();
     }

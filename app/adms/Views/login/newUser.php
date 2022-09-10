@@ -18,29 +18,27 @@ if (isset($this->data['form'])) {
             <span>Novo Usuário</span>
         </div>
 
-        <?php
-        if (isset($_SESSION['msg'])) {
-            echo $_SESSION['msg'];
-            unset($_SESSION['msg']);
-        }
-        ?>
-
-        <span id="msg"></span>
+        <div class="msg-alert">
+            <?php
+            if (isset($_SESSION['msg'])) {
+                echo "<span id='msg'> " . $_SESSION['msg'] . "</span>";
+                unset($_SESSION['msg']);
+            } else {
+                echo "<span id='msg'></span>";
+            }
+            ?>          
+        </div>
 
         <form method="POST" action="" id="form-new-user" class="form-login">
 
             <div class="row">
                 <i class="fa-solid fa-user"></i>
-                <input type="text" name="name" id="name" placeholder="Digite o nome completo" value="<?php if (isset($valorForm['name'])) {
-                                                                                                            echo $valorForm['name'];
-                                                                                                        } ?>" required>
+                <input type="text" name="name" id="name" placeholder="Digite o nome completo" value="<?php if (isset($valorForm['name'])) { echo $valorForm['name']; } ?>" required>
             </div>
 
             <div class="row">
                 <i class="fa-solid fa-envelope"></i>
-                <input type="email" name="email" id="email" placeholder="Digite o seu email" value="<?php if (isset($valorForm['email'])) {
-                                                                                                        echo $valorForm['email'];
-                                                                                                    } ?>" required>
+                <input type="email" name="email" id="email" placeholder="Digite o seu email" value="<?php if (isset($valorForm['email'])) { echo $valorForm['email']; } ?>" required>
             </div>
 
             <div class="row">

@@ -16,14 +16,16 @@ if (isset($this->data['form'])) {
             <span>Recuperar Senha</span>
         </div>
 
-        <?php
-        if (isset($_SESSION['msg'])) {
-            echo $_SESSION['msg'];
-            unset($_SESSION['msg']);
-        }
-        ?>
-
-        <span id="msg"></span>
+        <div class="msg-alert">
+            <?php
+            if (isset($_SESSION['msg'])) {
+                echo "<span id='msg'> " . $_SESSION['msg'] . "</span>";
+                unset($_SESSION['msg']);
+            } else {
+                echo "<span id='msg'></span>";
+            }
+            ?>          
+        </div>
 
         <form method="POST" action="" id="form-recover-pass" class="form-login">
 

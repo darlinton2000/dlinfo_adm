@@ -24,7 +24,7 @@ class Dashboard
      */
     public function index(): void
     {
-        $this->data = "Bem vindo";
+        $this->data['sidebarActive'] = "dashboard";
 
         $loadView = new \Core\ConfigView("adms/Views/dashboard/dashboard", $this->data);
         $loadView->loadView();

@@ -49,7 +49,7 @@ class AdmsUpdatePassword
             $this->result = true;
             return true;
         } else {
-            $_SESSION['msg'] = "<p style='color: red;'>Erro: Link inválido, solicite novo link <a href='".URLADM."recover-password/index'>clique aqui</a>!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Link inválido, solicite novo link <a href='".URLADM."recover-password/index'>clique aqui</a>!</p>";
             $this->result = false;
             return false;
         }
@@ -92,10 +92,10 @@ class AdmsUpdatePassword
         $upPassword->exeUpdate("adms_users", $this->dataSave, "WHERE id=:id", "id={$this->resultBd[0]['id']}");
 
         if ($upPassword->getResult()){
-            $_SESSION['msg'] = "<p style='color: green;'>Senha atualizada com sucesso!</p>";
+            $_SESSION['msg'] = "<p class='alert-success'>Senha atualizada com sucesso!</p>";
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p style='color: red;'>Erro: Senha não atualizada, tente novamente!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Senha não atualizada, tente novamente!</p>";
             $this->result = false;
         }
     }

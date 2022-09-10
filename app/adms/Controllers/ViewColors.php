@@ -48,6 +48,8 @@ class ViewColors
 
     private function viewColor(): void
     {   
+        $this->data['sidebarActive'] = "list-colors";
+        
         $loadView = new \Core\ConfigView("adms/Views/colors/viewColors", $this->data);
         $loadView->loadView();
     }

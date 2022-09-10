@@ -56,6 +56,8 @@ class AddUsers
         $listSelect = new \App\adms\Models\AdmsAddUsers();
         $this->data['select'] = $listSelect->listSelect();
 
+        $this->data['sidebarActive'] = "list-users";
+
         $loadView = new \Core\ConfigView("adms/Views/users/addUser", $this->data);
         $loadView->loadView();
     }

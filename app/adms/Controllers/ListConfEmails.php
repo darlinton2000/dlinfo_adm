@@ -32,6 +32,8 @@ class ListConfEmails
             $this->data['listConfEmails'] = [];
         }
 
+        $this->data['sidebarActive'] = "list-conf-emails";
+
         $loadView = new \Core\ConfigView("adms/Views/confEmails/listConfEmails", $this->data);
         $loadView->loadView();
     }

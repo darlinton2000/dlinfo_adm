@@ -7,4 +7,4 @@ if (!defined('C8L6K7E')){
 
 echo "<h2>Dashboard</h2>";
 /* echo "VIEW - Página Dashboard!<br>"; */
-echo $this->data . " " . $_SESSION['user_name'] . "!<br>";
+echo "Bem vindo " . $_SESSION['user_name'] . "!<br>";

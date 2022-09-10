@@ -56,6 +56,8 @@ class EditUsersPassword
      */
     private function viewEditUserPass(): void
     {
+        $this->data['sidebarActive'] = "list-users";
+        
         $loadView = new \Core\ConfigView("adms/Views/users/editUserPass", $this->data);
         $loadView->loadView();
     }

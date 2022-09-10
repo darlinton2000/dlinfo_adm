@@ -66,7 +66,7 @@ class AdmsRecoverPassword
         if ($this->resultBd){
             $this->valConfEmail();    
         } else {
-            $_SESSION['msg'] = "<p style='color: #f00;'>Erro: E-mail não cadastrado!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: E-mail não cadastrado!</p>";
             $this->result = false;
         }
     }
@@ -83,7 +83,7 @@ class AdmsRecoverPassword
             $this->resultBd[0]['recover_password'] = $this->dataSave['recover_password'];
             $this->sendEmail();
         } else {
-            $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Link não enviado, tente novamente!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Link não enviado, tente novamente!</p>";
             $this->result = false;
         }        
     }
@@ -96,10 +96,10 @@ class AdmsRecoverPassword
         $sendEmail->sendEmail($this->emailData, 2);
 
         if ($sendEmail->getResult()){
-            $_SESSION['msg'] = "<p style='color: green;'>Enviado e-mail com instruções para recuperar a senha. Acesse a sua caixa de e-mail para recuperar a senha!</p>";
+            $_SESSION['msg'] = "<p class='alert-success'>Enviado e-mail com instruções para recuperar a senha. Acesse a sua caixa de e-mail para recuperar a senha!</p>";
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p style='color: red;'> Erro: E-mail com as instruções para recuperar a senha não enviado, tente novamente ou entre em contato com o e-mail {$sendEmail->getFromEmail()}!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'> Erro: E-mail com as instruções para recuperar a senha não enviado, tente novamente ou entre em contato com o e-mail {$sendEmail->getFromEmail()}!</p>";
             $this->result = false;
         }
     }

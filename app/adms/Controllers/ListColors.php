@@ -32,6 +32,8 @@ class ListColors
             $this->data['listColors'] = [];
         }
 
+        $this->data['sidebarActive'] = "list-colors";
+
         $loadView = new \Core\ConfigView("adms/Views/colors/listColors", $this->data);
         $loadView->loadView();
     }

@@ -92,7 +92,7 @@ class CarregarPgAdm
         if (in_array($this->urlController, $this->listPgPrivate)){
             $this->verifyLogin();
         } else {
-            $_SESSION['msg'] = "<p style='color: red;'>Erro: Página não encontrada!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Página não encontrada!</p>";
             $urlRedirect = URLADM . "login/index";
             header("Location: $urlRedirect");
         }
@@ -108,7 +108,7 @@ class CarregarPgAdm
         if ((isset($_SESSION['user_id'])) and (isset($_SESSION['user_name'])) and (isset($_SESSION['user_email']))){
             $this->classLoad = "\\App\\adms\\Controllers\\" . $this->urlController;
         } else {
-            $_SESSION['msg'] = "<p style='color: red;'>Erro: Para acessar a página realize o login!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Para acessar a página realize o login!</p>";
             $urlRedirect = URLADM . "login/index";
             header("Location: $urlRedirect");
         }

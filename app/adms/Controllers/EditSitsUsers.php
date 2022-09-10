@@ -59,6 +59,8 @@ class EditSitsUsers
         $listSelect = new \App\adms\Models\AdmsEditSitsUsers();
         $this->data['select'] = $listSelect->listSelect();
 
+        $this->data['sidebarActive'] = "list-sits-users";
+        
         $loadView = new \Core\ConfigView("adms/Views/sitsUser/editSitUser", $this->data);
         $loadView->loadView();
     }
