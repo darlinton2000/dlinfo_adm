@@ -2,7 +2,7 @@
 
 namespace App\adms\Models\helper;
 
-if (!defined('C8L6K7E')){
+if (!defined('C8L6K7E')) {
     header("Location: /");
     die("Erro: Página não encontrada<br>");
 }
@@ -13,7 +13,7 @@ if (!defined('C8L6K7E')){
  * @author Darlinton Luis Siqueira <darlinton2000@gmail.com>
  */
 class AdmsPagination
-{   
+{
     private int $page;
     private int $limitResult;
     private int $offset;
@@ -60,13 +60,24 @@ class AdmsPagination
     }
 
     private function pageInstruction(): void
-    {   
-        $this->totalPages = (int) ceil($this->resultBd[0]['num_result'] / $this->limitResult);
+    {
+        /* $this->totalPages = (int) ceil($this->resultBd[0]['num_result'] / $this->limitResult);
         if ($this->totalPages >= $this->page){
             $_SESSION['total_registro'] = $this->resultBd[0]['num_result'];
             $this->layoutPagination();
         } else {
             header("Location: {$this->link}");
+        } */
+
+        if (!$this->resultBd[0]['num_result'] == 0) {
+            $this->totalPages = (int) ceil($this->resultBd[0]['num_result'] / $this->limitResult);
+            if ($this->totalPages >= $this->page) {
+                $this->layoutPagination();
+            } else {
+                header("Location: {$this->link}");
+            }
+        } else {
+            $this->result = 0;
         }
     }
 
@@ -76,18 +87,18 @@ class AdmsPagination
 
         $this->result .= "<li><a href='{$this->link}{$this->var}'>Primeira</a></li>";
 
-        for ($beforePage = $this->page - $this->maxLinks; $beforePage <= $this->page - 1; $beforePage++){
-            if ($beforePage >= 1){
+        for ($beforePage = $this->page - $this->maxLinks; $beforePage <= $this->page - 1; $beforePage++) {
+            if ($beforePage >= 1) {
                 $this->result .= "<li><a href='{$this->link}/$beforePage{$this->var}'>$beforePage</a></li>";
             }
         }
 
         $this->result .= "<li>{$this->page}</li>";
 
-        for ($afterPage = $this->page + 1; $afterPage <= $this->page + $this->maxLinks; $afterPage++){
-            if ($afterPage <= $this->totalPages){  
+        for ($afterPage = $this->page + 1; $afterPage <= $this->page + $this->maxLinks; $afterPage++) {
+            if ($afterPage <= $this->totalPages) {
                 $this->result .= "<li><a href='{$this->link}/$afterPage{$this->var}'>$afterPage</a></li>";
-            }   
+            }
         }
 
         $this->result .= "<li><a href='{$this->link}/{$this->totalPages}{$this->var}'>Última</a></li>";
