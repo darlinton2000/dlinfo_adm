@@ -24,6 +24,14 @@ class Dashboard
      */
     public function index(): void
     {
+        $countUsers = new \App\adms\Models\AdmsDashboard();
+        $countUsers->countUsers();
+        if ($countUsers->getResult()){
+            $this->data['countUsers'] = $countUsers->getResultBd();
+        } else {
+            $this->data['countUsers'] = false;
+        }
+
         $this->data['sidebarActive'] = "dashboard";
 
         $loadView = new \Core\ConfigView("adms/Views/dashboard/dashboard", $this->data);
