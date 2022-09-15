@@ -10,6 +10,7 @@ if (!defined('C8L6K7E')){
 <!-- Inicio do conteudo do administrativo -->
 <div class="wrapper">
     <div class="row">
+
         <div class="top-list">
             <span class="title-content">Listar E-mail</span>
             <div class="top-list-right">
@@ -18,12 +19,16 @@ if (!defined('C8L6K7E')){
                 ?>
             </div>
         </div>
-        <?php
-        if (isset($_SESSION['msg'])) {
-            echo $_SESSION['msg'];
-            unset($_SESSION['msg']);
-        }
-        ?>
+
+        <div class="content-adm">
+            <?php
+                if (isset($_SESSION['msg'])) {
+                    echo $_SESSION['msg'];
+                    unset($_SESSION['msg']);
+                }
+            ?>
+        </div>
+
         <table class="table-list">
             <thead class="list-head">
                 <tr>

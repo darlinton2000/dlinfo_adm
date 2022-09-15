@@ -48,10 +48,10 @@ class AdmsDeleteColors
             $deleteColor->exeDelete("adms_colors", "WHERE id=:id", "id={$this->id}");
 
             if ($deleteColor->getResult()){
-                $_SESSION['msg'] = "<p style='color: green;'>Cor apagada com sucesso!</p>";
+                $_SESSION['msg'] = "<p class='alert-success'>Cor apagada com sucesso!</p>";
                 $this->result = true;
             } else {
-                $_SESSION['msg'] = "<p style='color: red;'>Erro: Cor não apagada com sucesso!</p>";
+                $_SESSION['msg'] = "<p class='alert-danger'>Erro: Cor não apagada com sucesso!</p>";
                 $this->result = false;
             }
         } else {
@@ -73,7 +73,7 @@ class AdmsDeleteColors
         if ($this->resultBd){
             return true;
         } else {
-            $_SESSION['msg'] = "<p style='color: red;'>Erro: Cor não encontrada!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Cor não encontrada!</p>";
             return false;
         }   
     }
@@ -87,7 +87,7 @@ class AdmsDeleteColors
         $viewColorUsed = new \App\adms\Models\helper\AdmsRead();
         $viewColorUsed->fullRead("SELECT id FROM adms_sits_users WHERE adms_color_id =:adms_color_id LIMIT :limit", "adms_color_id={$this->id}&limit=1");
         if ($viewColorUsed->getResult()){
-            $_SESSION['msg'] = "<p style='color: red;'>Erro: Cor não pode ser apagada, há situações cadastradas com essa cor!</p>";
+            $_SESSION['msg'] = "<p class='alert-warning'>Erro: Cor não pode ser apagada, há situações cadastradas com essa cor!</p>";
             return false;
         } else {    
             return true;
