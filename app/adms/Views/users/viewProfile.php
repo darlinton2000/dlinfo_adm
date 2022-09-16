@@ -1,35 +1,73 @@
-<?php 
+<?php
 
-if (!defined('C8L6K7E')){
+if (!defined('C8L6K7E')) {
     header("Location: /");
     die("Erro: Página não encontrada<br>");
 }
 
-echo "<h2>Perfil</h2>";
+?>
 
-if (!empty($this->data['viewProfile'])){
-    echo "<a href='".URLADM."edit-profile/index'>Editar</a><br>";
-    echo "<a href='".URLADM."edit-profile-password/index'>Editar Senha</a><br>";
-    echo "<a href='".URLADM."edit-profile-image/index'>Editar Imagem</a><br><br>";
-}
+<!-- Inicio do conteudo do administrativo -->
+<div class="wrapper">
+    <div class="row">
+        <div class="top-list">
+            <span class="title-content">Perfil</span>
+            <div class="top-list-right">
+                <?php
+                if (!empty($this->data['viewProfile'])) {
+                    echo "<a href='" . URLADM . "edit-profile/index' class='btn-warning'>Editar</a> ";
+                    echo "<a href='" . URLADM . "edit-profile-password/index' class='btn-warning'>Editar Senha</a> ";
+                    echo "<a href='" . URLADM . "edit-profile-image/index' class='btn-warning'>Editar Imagem</a><br> ";
+                }
+                ?>
+            </div>
+        </div>
 
-if (isset($_SESSION['msg'])){
-    echo $_SESSION['msg'];
-    unset($_SESSION['msg']);
-}
+        <div class="content-adm">
+            <?php
+            if (isset($_SESSION['msg'])) {
+                echo $_SESSION['msg'];
+                unset($_SESSION['msg']);
+            }
+            ?>
+        </div>
 
-if (!empty($this->data['viewProfile'])){
-    extract($this->data['viewProfile'][0]);
+        <div class="content-adm">
+            <?php
+            if (!empty($this->data['viewProfile'])) {
+                extract($this->data['viewProfile'][0]);
+            ?>
+                <div class="view-det-adm">
+                    <span class="view-adm-title">Foto: </span>
+                    <span class="view-adm-info">
+                        <?php
+                        //Verificando se existe uma imagem de perfil do usuário, se não existir irá atribuir uma imagem padrão
+                        if ((!empty($image)) and (file_exists("app/adms/assets/image/users/" . $_SESSION['user_id'] . "/$image"))) {
+                            echo "<img src='" . URLADM . "app/adms/assets/image/users/" . $_SESSION['user_id'] . "/$image' width='100' height='100'><br><br>";
+                        } else {
+                            echo "<img src='" . URLADM . "app/adms/assets/image/users/icon_user.png' width='100' height='100'><br><br>";
+                        }
+                        ?>
+                    </span>
+                </div>
 
-    //Verificando se existe uma imagem de perfil do usuário, se não existir irá atribuir uma imagem padrão
-    if ((!empty($image)) and (file_exists("app/adms/assets/image/users/" . $_SESSION['user_id'] . "/$image"))){
-        echo "<img src='" . URLADM . "app/adms/assets/image/users/" . $_SESSION['user_id'] ."/$image' width='100' height='100'><br><br>";
-    } else {
-        echo "<img src='" . URLADM . "app/adms/assets/image/users/icon_user.png' width='100' height='100'><br><br>";
-    }
+                <div class="view-det-adm">
+                    <span class="view-adm-title">Nome: </span>
+                    <span class="view-adm-info"><?php echo $name; ?></span>
+                </div>
 
-    echo "Nome: $name <br>";
-    echo "Apelido: $nickname <br>";
-    echo "E-mail: $email <br>";
-    echo "<br>";
-}
+                <div class="view-det-adm">
+                    <span class="view-adm-title">Apelido: </span>
+                    <span class="view-adm-info"><?php echo $nickname; ?></span>
+                </div>
+
+                <div class="view-det-adm">
+                    <span class="view-adm-title">E-mail: </span>
+                    <span class="view-adm-info"><?php echo $email; ?></span>
+                </div>
+
+            <?php } ?>
+        </div>
+    </div>
+</div>
+<!-- Fim do conteudo do administrativo -->

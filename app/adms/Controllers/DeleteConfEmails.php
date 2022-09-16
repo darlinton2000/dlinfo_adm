@@ -23,7 +23,7 @@ class DeleteConfEmails
             $deleteConfEmail = new \App\adms\Models\AdmsDeleteConfEmails();
             $deleteConfEmail->deleteConfEmail($this->id);
         } else {
-            $_SESSION['msg'] = "<p style='color: red;'>Erro: Necessário selecionar uma configuração de e-mail!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Necessário selecionar uma configuração de e-mail!</p>";
         }
 
         $urlRedirect = URLADM . "list-conf-emails/index";

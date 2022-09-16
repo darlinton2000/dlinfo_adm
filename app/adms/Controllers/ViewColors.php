@@ -40,7 +40,7 @@ class ViewColors
                 header("Location: $urlRedirect");
             }
         } else {
-            $_SESSION['msg'] = "<p style='color: red;'>Erro: Cor não encontrada!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Cor não encontrada!</p>";
             $urlRedirect = URLADM . "list-colors/index";
             header("Location: $urlRedirect");
         }

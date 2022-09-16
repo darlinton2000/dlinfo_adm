@@ -74,7 +74,7 @@ class EditConfEmailsPassword
                 $this->editPassConfEmail();
              }
         } else {
-            $_SESSION['msg'] = "<p style='color: red;'>Erro: Configuração de e-mail não encontrada!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Configuração de e-mail não encontrada!</p>";
             $urlRedirect = URLADM . "list-conf-emails/index";
             header("Location: $urlRedirect");
         }

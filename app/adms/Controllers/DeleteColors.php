@@ -23,7 +23,7 @@ class DeleteColors
             $deleteColor = new \App\adms\Models\AdmsDeleteColors();
             $deleteColor->deleteColor($this->id);
         } else {
-            $_SESSION['msg'] = "<p style='color: red;'>Erro: Necessário selecionar uma cor!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Necessário selecionar uma cor!</p>";
         }
 
         $urlRedirect = URLADM . "list-colors/index";

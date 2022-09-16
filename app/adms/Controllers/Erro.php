@@ -25,7 +25,7 @@ class Erro
     {
         echo "Pagina de erro<br>";
 
-        $this->data = "<p style='color: red;'>Página não encontrada!</p>";
+        $this->data = "<p class='alert-danger'>Página não encontrada!</p>";
 
         $loadView = new \Core\ConfigView("adms/Views/erro/erro", $this->data);
         $loadView->loadViewLogin();

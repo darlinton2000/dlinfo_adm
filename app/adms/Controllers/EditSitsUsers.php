@@ -79,7 +79,7 @@ class EditSitsUsers
                 $this->viewEditSitUser();
              }
         } else {
-            $_SESSION['msg'] = "<p style='color: red;'>Erro: Situação não encontrada!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Situação não encontrada!</p>";
             $urlRedirect = URLADM . "list-sits-users/index";
             header("Location: $urlRedirect");
         }

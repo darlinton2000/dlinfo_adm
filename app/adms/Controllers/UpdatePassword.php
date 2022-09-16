@@ -65,7 +65,7 @@ class UpdatePassword
                 $this->viewUpdatePassword();
             }
         } else {
-            $_SESSION['msg'] = "<p style='color: red;'>Erro: Link inválido, solicite um novo link <a href='" . URLADM . "recover-password/index'>Clique aqui</a>!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Link inválido, solicite um novo link <a href='" . URLADM . "recover-password/index'>Clique aqui</a>!</p>";
             $urlRedirect = URLADM . "login/index";
             header("Location: $urlRedirect");
         }

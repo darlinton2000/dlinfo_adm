@@ -71,7 +71,7 @@ class EditProfileImage
                 $this->viewEditProfImage();
              }
         } else {
-            $_SESSION['msg'] = "<p style='color: red;'>Erro: Perfil não encontrado!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Perfil não encontrado!</p>";
             $urlRedirect = URLADM . "login/index";
             header("Location: $urlRedirect");
         }

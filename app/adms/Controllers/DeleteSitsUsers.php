@@ -23,7 +23,7 @@ class DeleteSitsUsers
             $deleteSitUser = new \App\adms\Models\AdmsDeleteSitsUsers();
             $deleteSitUser->deleteSitUser($this->id);
         } else {
-            $_SESSION['msg'] = "<p style='color: red;'>Erro: Necessário selecionar uma situação!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Necessário selecionar uma situação!</p>";
         }
 
         $urlRedirect = URLADM . "list-sits-users/index";
