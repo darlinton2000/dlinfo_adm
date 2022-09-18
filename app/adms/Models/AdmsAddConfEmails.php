@@ -66,10 +66,10 @@ class AdmsAddConfEmails
         $createSitUser->exeCreate("adms_confs_emails", $this->data);
 
         if ($createSitUser->getResult()) {
-            $_SESSION['msg'] = "<p style='color: green;'>Configuração de e-mail cadastrada com sucesso!</p>";
+            $_SESSION['msg'] = "<p class='alert-success'>Configuração de e-mail cadastrada com sucesso!</p>";
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Configuração de e-mail não cadastrada com sucesso!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Configuração de e-mail não cadastrada com sucesso!</p>";
             $this->result = false;
         }
     }

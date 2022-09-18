@@ -24,6 +24,6 @@ if (isset($this->data['sidebarActive'])){
 
             <a href="<?php echo URLADM; ?>list-conf-emails/index" class="sidebar-nav <?php if ($sidebar_active == "list-conf-emails") { echo "active"; } ?>"><i class="icon fa-solid fa-envelope"></i><span>Configurações de E-mail</span></a>
 
-            <a href="<?php echo URLADM; ?>logout/index" class="sidebar-nav"><i class="icon fa-solid fa-arrow-right-from-bracket"></i><span>Sair</span></a>
+            <!-- <a href="<?php echo URLADM; ?>logout/index" class="sidebar-nav"><i class="icon fa-solid fa-arrow-right-from-bracket"></i><span>Sair</span></a> -->
         </div>
         <!-- Fim da Sidebar -->

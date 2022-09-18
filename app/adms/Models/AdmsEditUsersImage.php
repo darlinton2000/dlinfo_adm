@@ -66,7 +66,7 @@ class AdmsEditUsersImage
             $this->result = true;
             return true;
         } else {
-            $_SESSION['msg'] = "<p style='color: #f00'>Erro: Usuário não encontrado!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Usuário não encontrado!</p>";
             $this->result = false;
             return false;
         }
@@ -96,7 +96,7 @@ class AdmsEditUsersImage
                 //$this->result = false;
                 $this->valInput();
             } else {
-                $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Necessário selecionar uma imagem!</p>";
+                $_SESSION['msg'] = "<p class='alert-danger'>Erro: Necessário selecionar uma imagem!</p>";
                 $this->result = false;
             }
         } else {
@@ -169,7 +169,7 @@ class AdmsEditUsersImage
         if ($upUser->getResult()) {
             $this->deleteImage();
         } else {
-            $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Usuário não editado com sucesso!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Usuário não editado com sucesso!</p>";
             $this->result = false;
         }
     }
@@ -188,7 +188,7 @@ class AdmsEditUsersImage
             }
         }
 
-        $_SESSION['msg'] = "<p style='color: green;'>Imagem editada com sucesso!</p>";
+        $_SESSION['msg'] = "<p class='alert-success'>Imagem editada com sucesso!</p>";
         $this->result = true;
     }
 }

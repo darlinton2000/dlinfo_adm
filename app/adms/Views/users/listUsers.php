@@ -20,7 +20,7 @@ if (!defined('C8L6K7E')) {
             </div>
         </div>
 
-        <div class="content-adm">
+        <div class="content-adm-alert">
             <?php
                 if (isset($_SESSION['msg'])) {
                     echo $_SESSION['msg'];

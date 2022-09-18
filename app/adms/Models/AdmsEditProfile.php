@@ -48,7 +48,7 @@ class AdmsEditProfile
         if ($this->resultBd){
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p style='color: red;'>Erro: Perfil não encontrado!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Perfil não encontrado!</p>";
             $this->result = false;
         }   
     }
@@ -126,10 +126,10 @@ class AdmsEditProfile
             $_SESSION['user_name'] = $this->data['name'];
             $_SESSION['user_nickname'] = $this->data['nickname'];
             $_SESSION['user_email'] = $this->data['email'];
-            $_SESSION['msg'] = "<p style='color: green;'>Perfil editado com sucesso!</p>";
+            $_SESSION['msg'] = "<p class='alert-success'>Perfil editado com sucesso!</p>";
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Perfil não editado com sucesso!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Perfil não editado com sucesso!</p>";
             $this->result = false;
         }
     }

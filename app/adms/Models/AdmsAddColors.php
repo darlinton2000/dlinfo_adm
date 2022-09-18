@@ -67,7 +67,7 @@ class AdmsAddColors
         $this->resultBd = $listColorUnique->getResult();
 
         if ($this->resultBd) {
-            $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Cor já cadastrada!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Cor já cadastrada!</p>";
             $this->result = false;
         } else {
             $this->add();
@@ -89,10 +89,10 @@ class AdmsAddColors
         $createSitUser->exeCreate("adms_colors", $this->data);
 
         if ($createSitUser->getResult()) {
-            $_SESSION['msg'] = "<p style='color: green;'>Cor cadastrada com sucesso!</p>";
+            $_SESSION['msg'] = "<p class='alert-success'>Cor cadastrada com sucesso!</p>";
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Cor não cadastrada com sucesso!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Cor não cadastrada com sucesso!</p>";
             $this->result = false;
         }
     }

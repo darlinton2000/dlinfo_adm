@@ -71,7 +71,7 @@ class AdmsListColors
         if ($this->resultBd){
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p style='color: red;'>Erro: Nenhuma cor encontrada!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Nenhuma cor encontrada!</p>";
             $this->result = false;
         }   
     }

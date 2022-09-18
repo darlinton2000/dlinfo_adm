@@ -1,60 +1,87 @@
-<?php 
+<?php
 
-if (!defined('C8L6K7E')){
+if (!defined('C8L6K7E')) {
     header("Location: /");
     die("Erro: Página não encontrada<br>");
 }
 
-if (isset($this->data['form'])){
+if (isset($this->data['form'])) {
     $valorForm = $this->data['form'];
 }
 
 ?>
 
-<h1>Cadastrar Usuário</h1>
+<!-- Inicio do conteudo do administrativo -->
+<div class="wrapper">
+    <div class="row">
+        <div class="top-list">
+            <span class="title-content">Cadastrar Usuário</span>
+            <div class="top-list-right">
+                <?php
+                echo "<a href='" . URLADM . "list-users/index' class='btn-info'>Listar</a>";
+                ?>
+            </div>
+        </div>
 
-<?php
-
-echo "<a href='".URLADM."list-users/index'>Listar</a><br><br>";
-
-if (isset($_SESSION['msg'])){
-    echo $_SESSION['msg'];
-    unset ($_SESSION['msg']);
-}
-?>
-
-<span id="msg"></span>
-
-<form method="POST" action="" id="form-add-user">
-    <label>Nome:<span style="color: red;">*</span> </label>
-    <input type="text" name="name" id="name" placeholder="Digite o nome completo" value="<?php if (isset($valorForm['name'])) { echo $valorForm['name']; }?>" required><br><br>
-
-    <label>Email:<span style="color: red;">*</span> </label>
-    <input type="email" name="email" id="email" placeholder="Digite o seu email" value="<?php if (isset($valorForm['email'])) { echo $valorForm['email']; }?>" required><br><br>
-
-    <label>Usuário:<span style="color: red;">*</span> </label>
-    <input type="text" name="user" id="user" placeholder="Digite o usuário para acessar o administrativo" value="<?php if (isset($valorForm['user'])) { echo $valorForm['user']; }?>" required><br><br>
-
-    <label>Situação:<span style="color: red;">*</span> </label>
-    <select name="adms_sits_user_id" id="adms_sits_user_id" required>
-        <option value="">Selecione</option>
-        <?php
-        foreach ($this->data['select']['sit'] as $sit){
-            extract($sit);
-            if ((isset($valorForm['adms_sits_user_id'])) and ($valorForm['adms_sits_user_id'] == $id_sit)){
-                echo "<option value='$id_sit' selected>$name_sit</option>";
-            } else {
-                echo "<option value='$id_sit'>$name_sit</option>";
+        <div class="content-adm-alert">
+            <?php
+            if (isset($_SESSION['msg'])) {
+                echo $_SESSION['msg'];
+                unset($_SESSION['msg']);
             }
-        }
-        ?>
-    </select><br><br>
+            ?>
+            <span id="msg"></span>
+        </div>
 
-    <label>Senha:<span style="color: red;">*</span> </label>
-    <input type="password" name="password" id="password" placeholder="Digite a senha" onkeyup="passwordStrength()" autocomplete="on" required>
-    <span id="msgViewStrength"><br><br></span>
-    
-    <span style="color: red;">* Campo Obrigatório</span><br><br>
+        <div class="content-adm">
+            <form class="form-adm" method="POST" action="" id="form-add-user">
+                <div class="row-input">
+                    <div class="column">
+                        <label class="title-input">Nome:<span class="text-danger"> *</span></label>
+                        <input type="text" name="name" id="name" class="input-adm" placeholder="Digite o nome completo" value="<?php if (isset($valorForm['name'])) { echo $valorForm['name']; } ?>" required>
+                    </div>
+                    <div class="column">
+                        <label class="title-input">E-mail:<span class="text-danger"> *</span></label>
+                        <input type="email" name="email" id="email" class="input-adm" placeholder="Digite o seu email" value="<?php if (isset($valorForm['email'])) { echo $valorForm['email']; } ?>" required>
+                    </div>
+                </div>
 
-    <button type="submit" name="SendAddUser" value="Cadastrar">Cadastrar</button>
-</form>
+                <div class="row-input">
+                    <div class="column">
+                        <label class="title-input">Usuário:<span class="text-danger"> *</span></label>
+                        <input type="text" name="user" id="user" class="input-adm" placeholder="Digite o usuário para acessar o administrativo" value="<?php if (isset($valorForm['user'])) { echo $valorForm['user']; } ?>" required>
+                    </div>
+                    <div class="column">
+                        <label class="title-input">Senha:<span class="text-danger"> *</span></label>
+                        <input type="password" name="password" id="password" class="input-adm" placeholder="Digite a senha" onkeyup="passwordStrength()" autocomplete="on" required>
+                        <span id="msgViewStrength"></span>
+                    </div>
+                </div>
+
+                <div class="row-input">
+                    <div class="column">
+                        <label class="title-input">Situação:<span class="text-danger"> *</span></label>
+                        <select name="adms_sits_user_id" id="adms_sits_user_id" class="input-adm" required>
+                        <option value="">Selecione</option>
+                        <?php
+                        foreach ($this->data['select']['sit'] as $sit) {
+                            extract($sit);
+                            if ((isset($valorForm['adms_sits_user_id'])) and ($valorForm['adms_sits_user_id'] == $id_sit)) {
+                                echo "<option value='$id_sit' selected>$name_sit</option>";
+                            } else {
+                                echo "<option value='$id_sit'>$name_sit</option>";
+                            }
+                        }
+                        ?>
+                        </select>
+                    </div>
+                </div>
+
+                <p class="text-danger mb-5 fs-4">* Campo Obrigatório</p>
+
+                <button type="submit" class="btn-success" name="SendAddUser" value="Cadastrar">Cadastrar</button>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Fim do conteudo do administrativo -->

@@ -51,11 +51,11 @@ class AdmsConfEmail extends AdmsConn
             if ($this->resultBd){
                 $this->updateSitUsers();
             } else {
-                $_SESSION['msg'] = "<p style='color: red;'>Erro: Necessário confirmar o e-mail, solicite novo link <a href='".URLADM."new-conf-email/index'>Clique aqui</a>!</p>";
+                $_SESSION['msg'] = "<p class='alert-danger'>Erro: Necessário confirmar o e-mail, solicite novo link <a href='".URLADM."new-conf-email/index'>Clique aqui</a>!</p>";
                 $this->result = false;
             }   
         } else {
-            $_SESSION['msg'] = "<p style='color: red;'>Erro: Necessário confirmar o e-mail, solicite novo link <a href='".URLADM."new-conf-email/index'>Clique aqui</a>!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Necessário confirmar o e-mail, solicite novo link <a href='".URLADM."new-conf-email/index'>Clique aqui</a>!</p>";
             $this->result = false;
         }
     }
@@ -70,10 +70,10 @@ class AdmsConfEmail extends AdmsConn
         $upConfEmail->exeUpdate("adms_users", $this->dataSave, "WHERE id=:id", "id={$this->resultBd[0]['id']}");
 
         if ($upConfEmail->getResult()){
-            $_SESSION['msg'] = "<p style='color: green;'>E-mail ativado com sucesso!</p>";
+            $_SESSION['msg'] = "<p class='alert-success'>E-mail ativado com sucesso!</p>";
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p style='color: red;'>Erro: Necessário confirmar o e-mail, solicite novo link <a href='".URLADM."new-conf-email/index'>Clique aqui</a>!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Necessário confirmar o e-mail, solicite novo link <a href='".URLADM."new-conf-email/index'>Clique aqui</a>!</p>";
             $this->result = false;
         }   
     }

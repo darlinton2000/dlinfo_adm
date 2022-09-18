@@ -45,7 +45,7 @@ class AdmsEditProfilePassword
         if ($this->resultBd){
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p style='color: red;'>Erro: Perfil não encontrado!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Perfil não encontrado!</p>";
             $this->result = false;
         }   
     }
@@ -108,10 +108,10 @@ class AdmsEditProfilePassword
         $upUser->exeUpdate("adms_users", $this->data, "WHERE id=:id", "id=". $_SESSION['user_id']);
 
         if ($upUser->getResult()) {
-            $_SESSION['msg'] = "<p style='color: green;'>Senha editada com sucesso!</p>";
+            $_SESSION['msg'] = "<p class='alert-success'>Senha editada com sucesso!</p>";
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Senha não editada com sucesso!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Senha não editada com sucesso!</p>";
             $this->result = false;
         }
     }

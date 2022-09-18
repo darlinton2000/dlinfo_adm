@@ -52,7 +52,7 @@ class AdmsViewConfEmails
         if ($this->resultBd){
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p style='color: red;'>Erro: Configuração de E-mail não encontrada!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Configuração de E-mail não encontrada!</p>";
             $this->result = false;
         }   
     }

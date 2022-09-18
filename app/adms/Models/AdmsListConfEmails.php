@@ -71,7 +71,7 @@ class AdmsListConfEmails
         if ($this->resultBd){
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p style='color: red;'>Erro: Nenhuma configuração de e-mail encontrada!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Nenhuma configuração de e-mail encontrada!</p>";
             $this->result = false;
         }   
     }

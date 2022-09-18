@@ -59,7 +59,7 @@ class AdmsEditSitsUsers
         if ($this->resultBd){
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p style='color: red;'>Erro: Situação não encontrada!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Situação não encontrada!</p>";
             $this->result = false;
         }   
     }
@@ -102,10 +102,10 @@ class AdmsEditSitsUsers
         $upSitUser->exeUpdate("adms_sits_users ", $this->data, "WHERE id=:id", "id={$this->data['id']}");
 
         if ($upSitUser->getResult()) {
-            $_SESSION['msg'] = "<p style='color: green;'>Situação editada com sucesso!</p>";
+            $_SESSION['msg'] = "<p class='alert-success'>Situação editada com sucesso!</p>";
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Situação não editada com sucesso!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Situação não editada com sucesso!</p>";
             $this->result = false;
         }
     }

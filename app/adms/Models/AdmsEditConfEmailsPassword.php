@@ -59,7 +59,7 @@ class AdmsEditConfEmailsPassword
         if ($this->resultBd){
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p style='color: red;'>Erro: Configuração de e-mail não encontrada!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Configuração de e-mail não encontrada!</p>";
             $this->result = false;
         }   
     }
@@ -102,10 +102,10 @@ class AdmsEditConfEmailsPassword
         $upPassConfEmail->exeUpdate("adms_confs_emails ", $this->data, "WHERE id=:id", "id={$this->data['id']}");
 
         if ($upPassConfEmail->getResult()) {
-            $_SESSION['msg'] = "<p style='color: green;'>Configuração de e-mail editada com sucesso!</p>";
+            $_SESSION['msg'] = "<p class='alert-success'>Configuração de e-mail editada com sucesso!</p>";
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Configuração de e-mail não editada com sucesso!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Configuração de e-mail não editada com sucesso!</p>";
             $this->result = false;
         }
     }

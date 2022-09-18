@@ -67,7 +67,7 @@ class AdmsUpload
         if ((!file_exists($this->directory)) and (!is_dir($this->directory))) {
             mkdir($this->directory, 0755);
             if ((!file_exists($this->directory)) and (!is_dir($this->directory))) {
-                $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Upload não realizado com sucesso. Tente novamente!</p>";
+                $_SESSION['msg'] = "<p class='alert-danger'>Erro: Upload não realizado com sucesso. Tente novamente!</p>";
                 return false;
             } else {
                 return true;
@@ -87,7 +87,7 @@ class AdmsUpload
         if (move_uploaded_file($this->tmpName, $this->directory .  $this->name)) {
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Upload não realizado com sucesso. Tente novamente!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Upload não realizado com sucesso. Tente novamente!</p>";
             $this->result = false;
         }
     }

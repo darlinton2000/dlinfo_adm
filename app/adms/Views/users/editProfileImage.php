@@ -14,37 +14,55 @@ if (isset($this->data['form'][0])){
 }
 ?>
 
-<h1>Editar Imagem</h1>
+<!-- Inicio do conteudo do administrativo -->
+<div class="wrapper">
+    <div class="row">
+        <div class="top-list">
+            <span class="title-content">Editar Imagem do Perfil</span>
+            <div class="top-list-right">
+                <?php
+                echo "<a href='".URLADM."view-profile/index' class='btn-info'>Perfil</a> ";
+                ?>
+            </div>
+        </div>
 
-<?php
-echo "<a href='".URLADM."view-profile/index'>Perfil</a><br><br>";
+        <div class="content-adm-alert">
+            <?php
+            if (isset($_SESSION['msg'])) {
+                echo $_SESSION['msg'];
+                unset($_SESSION['msg']);
+            }
+            ?>
+            <span id="msg"></span>
+        </div>
 
-if (isset($_SESSION['msg'])) {
-    echo $_SESSION['msg'];
-    unset($_SESSION['msg']);
-}
-?>
+        <div class="content-adm">
+            <form class="form-adm" method="POST" action="" id="form-edit-prof-img" enctype="multipart/form-data">
+            <?php
+                //Verificando se existe uma imagem de perfil do usuário, se não existir irá atribuir uma imagem padrão
+                if ((!empty($valorForm['image'])) and (file_exists("app/adms/assets/image/users/" . $_SESSION['user_id'] . "/" . $valorForm['image']))){
+                    $old_image = URLADM . "app/adms/assets/image/users/" . $_SESSION['user_id'] ."/". $valorForm['image'];
+                } else {
+                    $old_image = URLADM . "app/adms/assets/image/users/icon_user.png";
+                }
+            ?>
 
-<span id="msg"></span>
+                <span id="preview-img">
+                    <img src="<?php echo $old_image; ?>" alt="Imagem" style="width: 100px; height: 100px;">
+                </span>
 
-<form method="POST" action="" id="form-edit-prof-img" enctype="multipart/form-data">
-    <label>Imagem:<span style="color: red;">*</span> 300x300</label>
-    <input type="file" name="new_image" id="new_image" onchange="inputFileValImg()" required><br><br>
+                <div class="row-input">
+                    <div class="column">
+                        <label class="title-input">Imagem:<span class="text-danger"> *</span> 300x300</label><br>
+                        <input type="file" name="new_image" id="new_image" class="input-adm" onchange="inputFileValImg()" required>
+                    </div>
+                </div>
 
-    <?php
-        //Verificando se existe uma imagem de perfil do usuário, se não existir irá atribuir uma imagem padrão
-        if ((!empty($valorForm['image'])) and (file_exists("app/adms/assets/image/users/" . $_SESSION['user_id'] . "/" . $valorForm['image']))){
-            $old_image = URLADM . "app/adms/assets/image/users/" . $_SESSION['user_id'] ."/". $valorForm['image'];
-        } else {
-            $old_image = URLADM . "app/adms/assets/image/users/icon_user.png";
-        }
-    ?>
+                <p class="text-danger mb-5 fs-4">* Campo Obrigatório</p>
 
-    <span id="preview-img">
-        <img src="<?php echo $old_image; ?>" alt="Imagem" style="width: 100px; height: 100px;">
-    </span><br><br>
-
-    <span style="color: red;">* Campo Obrigatório</span><br><br>
-    
-    <button type="submit" name="SendEditProfImage" value="Salvar">Salvar</button>
-</form>
+                <button type="submit" class="btn-success" name="SendEditProfImage" value="Salvar">Salvar</button>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Fim do conteudo do administrativo -->

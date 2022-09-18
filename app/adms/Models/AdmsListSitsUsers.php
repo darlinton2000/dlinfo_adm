@@ -72,7 +72,7 @@ class AdmsListSitsUsers
         if ($this->resultBd){
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p style='color: red;'>Erro: Nenhuma situação encontrada!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Nenhuma situação encontrada!</p>";
             $this->result = false;
         }   
     }

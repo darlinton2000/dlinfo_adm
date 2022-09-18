@@ -51,7 +51,7 @@ class AdmsValExtImage
                 $this->result = true;   
                 break;
             default:
-                $_SESSION['msg'] = "<p style='color: red;'>Erro: Necessário selecionar imagem JPEG ou PNG!</p>";
+                $_SESSION['msg'] = "<p class='alert-danger'>Erro: Necessário selecionar imagem JPEG ou PNG!</p>";
                 $this->result = false;
         }
     }

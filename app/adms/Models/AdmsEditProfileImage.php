@@ -46,7 +46,7 @@ class AdmsEditProfileImage
             $this->result = true;
             return true;
         } else {
-            $_SESSION['msg'] = "<p style='color: red;'>Erro: Perfil não encontrado!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Perfil não encontrado!</p>";
             $this->result = false;
             return false;
         }   
@@ -75,7 +75,7 @@ class AdmsEditProfileImage
             if (!empty($this->dataImage['name'])) {
                 $this->valInput();
             } else {
-                $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Necessário selecionar uma imagem!</p>";
+                $_SESSION['msg'] = "<p class='alert-danger'>Erro: Necessário selecionar uma imagem!</p>";
                 $this->result = false;
             }
         } else {
@@ -146,7 +146,7 @@ class AdmsEditProfileImage
             $_SESSION['user_image'] = $this->nameImg;
             $this->deleteImage();
         } else {
-            $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Imagem não editada com sucesso!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Imagem não editada com sucesso!</p>";
             $this->result = false;
         }
     }
@@ -165,7 +165,7 @@ class AdmsEditProfileImage
             }
         }
 
-        $_SESSION['msg'] = "<p style='color: green;'>Imagem editada com sucesso!</p>";
+        $_SESSION['msg'] = "<p class='alert-success'>Imagem editada com sucesso!</p>";
         $this->result = true;
     }
 

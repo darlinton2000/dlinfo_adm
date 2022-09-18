@@ -14,25 +14,42 @@ if (isset($this->data['form'][0])){
 }
 ?>
 
-<h1>Editar Senha</h1>
+<!-- Inicio do conteudo do administrativo -->
+<div class="wrapper">
+    <div class="row">
+        <div class="top-list">
+            <span class="title-content">Editar Senha</span>
+            <div class="top-list-right">
+                <?php
+                echo "<a href='".URLADM."view-profile/index' class='btn-info'>Perfil</a><br><br>";
+                ?>
+            </div>
+        </div>
 
-<?php
-echo "<a href='".URLADM."view-profile/index'>Perfil</a><br><br>";
+        <div class="content-adm-alert">
+            <?php
+            if (isset($_SESSION['msg'])) {
+                echo $_SESSION['msg'];
+                unset($_SESSION['msg']);
+            }
+            ?>
+            <span id="msg"></span>
+        </div>
 
-if (isset($_SESSION['msg'])){
-    echo $_SESSION['msg'];
-    unset ($_SESSION['msg']);
-}
-?>
+        <div class="content-adm">
+            <form class="form-adm" method="POST" action="" id="form-edit-prof-pass">
+                <div class="row-input">
+                    <div class="column">
+                        <label class="title-input">Senha:<span class="text-danger"> *</span></label>
+                        <input type="password" name="password" id="password" class="input-adm" placeholder="Digite a nova senha" onkeyup="passwordStrength()" autocomplete="on" value="<?php if (isset($valorForm['password'])) { echo $valorForm['password']; }?>" required>
+                    </div>
+                </div>
 
-<span id="msg"></span>
+                <p class="text-danger mb-5 fs-4">* Campo Obrigatório</p>
 
-<form method="POST" action="" id="form-edit-prof-pass">    
-    <label>Senha:<span style="color: red;">*</span> </label>
-    <input type="password" name="password" id="password" placeholder="Digite a nova senha" onkeyup="passwordStrength()" autocomplete="on" value="<?php if (isset($valorForm['password'])) { echo $valorForm['password']; }?>" required>
-    <span id="msgViewStrength"><br><br></span>
-
-    <span style="color: red;">* Campo Obrigatório</span><br><br>
-    
-    <button type="submit" name="SendEditProfPass" value="Salvar">Salvar</button>
-</form>
+                <button type="submit" class="btn-success" name="SendEditProfPass" value="Salvar">Salvar</button>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Fim do conteudo do administrativo -->

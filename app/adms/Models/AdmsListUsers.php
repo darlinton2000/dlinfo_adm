@@ -76,7 +76,7 @@ class AdmsListUsers
         if ($this->resultBd){
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p style='color: red;'>Erro: Nenhum usuário encontrado!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Nenhum usuário encontrado!</p>";
             $this->result = false;
         }   
     }
