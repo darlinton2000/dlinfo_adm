@@ -50,7 +50,7 @@ class AdmsEditUsers
         $this->id = $id;
 
         $viewUser = new \App\adms\Models\helper\AdmsRead();
-        $viewUser->fullRead("SELECT id, name, nickname, email, user, adms_sits_user_id FROM adms_users WHERE id=:id LIMIT :limit", "id={$this->id}&limit=1");
+        $viewUser->fullRead("SELECT id, name, nickname, email, user, adms_sits_user_id, adms_access_level_id FROM adms_users WHERE id=:id LIMIT :limit", "id={$this->id}&limit=1");
 
         $this->resultBd = $viewUser->getResult();
         if ($this->resultBd){
@@ -62,13 +62,12 @@ class AdmsEditUsers
     }
 
     /** 
-     * Recebe os valores do formulário.
-     * Instancia o helper "AdmsValEmptyField" para verificar se todos os campos estão preenchidos 
-     * Verifica se todos os campos estão preenchidos e instancia o método "valInput" para validar os dados dos campos
-     * Retorna FALSE quando algum campo está vazio
+     * Método recebe as informações do usuário que serão validadas.
+     * Instancia o helper "AdmsValEmptyField" para validar os campos do formulário
+     * Retira o campo opcional "nickname" da validação
+     * Chama o método valinput para validar os campos específicos do formulário
      * 
      * @param array $data Recebe as informações do formulário
-     * 
      * @return void
      */
     public function update(array $data = null): void
@@ -150,7 +149,13 @@ class AdmsEditUsers
         $list->fullRead("SELECT id AS id_sit, name AS name_sit FROM adms_sits_users ORDER BY name ASC");
         $registry['sit'] = $list->getResult();
 
-        $this->listRegistryAdd = ['sit' => $registry['sit']];
+        $list->fullRead("SELECT id AS id_lev, name AS name_lev 
+                            FROM adms_access_levels
+                            WHERE order_levels >:order_levels 
+                            ORDER BY name ASC", "order_levels=" . $_SESSION['order_levels']);
+        $registry['lev'] = $list->getResult();
+
+        $this->listRegistryAdd = ['sit' => $registry['sit'], 'lev' => $registry['lev']];
 
         return $this->listRegistryAdd;
     }

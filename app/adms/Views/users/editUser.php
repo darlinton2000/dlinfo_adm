@@ -50,16 +50,23 @@ if (isset($this->data['form'][0])) {
                         <input type="text" name="name" id="name" class="input-adm" placeholder="Digite o nome completo" value="<?php if (isset($valorForm['name'])) { echo $valorForm['name']; } ?>" required>
                     </div>
                     <div class="column">
-                        <label class="title-input">E-mail:<span class="text-danger"> *</span></label>
-                        <input type="email" name="email" id="email" class="input-adm" placeholder="Digite o seu email" value="<?php if (isset($valorForm['email'])) { echo $valorForm['email']; } ?>" required>
+                        <label class="title-input">Apelido:<span class="text-danger"> *</span></label>
+                        <input type="text" name="nickname" id="nickname" class="input-adm" placeholder="Digite o apelido" value="<?php if (isset($valorForm['nickname'])) { echo $valorForm['nickname']; } ?>" required>
                     </div>
                 </div>
 
                 <div class="row-input">
                     <div class="column">
+                        <label class="title-input">E-mail:<span class="text-danger"> *</span></label>
+                        <input type="email" name="email" id="email" class="input-adm" placeholder="Digite o seu email" value="<?php if (isset($valorForm['email'])) { echo $valorForm['email']; } ?>" required>
+                    </div>
+                    <div class="column">
                         <label class="title-input">Usuário:<span class="text-danger"> *</span></label>
                         <input type="text" name="user" id="user" class="input-adm" placeholder="Digite o usuário para acessar o administrativo" value="<?php if (isset($valorForm['user'])) { echo $valorForm['user']; } ?>" required>
                     </div>
+                </div>
+
+                <div class="row-input">
                     <div class="column">
                         <label class="title-input">Situação:<span class="text-danger"> *</span></label>
                         <select name="adms_sits_user_id" id="adms_sits_user_id" class="input-adm" required>
@@ -74,6 +81,22 @@ if (isset($this->data['form'][0])) {
                                 }
                             }
                             ?>
+                        </select>
+                    </div>
+                    <div class="column">
+                        <label class="title-input">Nível de Acesso:<span class="text-danger"> *</span></label>
+                        <select name="adms_access_level_id" id="adms_access_level_id" class="input-adm" required>
+                        <option value="">Selecione</option>
+                        <?php
+                        foreach ($this->data['select']['lev'] as $lev) {
+                            extract($lev);
+                            if ((isset($valorForm['adms_access_level_id'])) and ($valorForm['adms_access_level_id'] == $id_lev)) {
+                                echo "<option value='$id_lev' selected>$name_lev</option>";
+                            } else {
+                                echo "<option value='$id_lev'>$name_lev</option>";
+                            }
+                        }
+                        ?>
                         </select>
                     </div>
                 </div>

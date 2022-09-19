@@ -140,6 +140,15 @@ if (formAddUser) {
         }
 
         //Receber o valor do campo
+        var adms_access_level_id = document.querySelector("#adms_access_level_id").value;
+        // Verificar se o campo esta vazio
+        if (adms_access_level_id === "") {
+            e.preventDefault();
+            document.getElementById("msg").innerHTML = "<p class='alert-danger'>Erro: Necessário preencher o campo nível de acesso!</p>";
+            return;
+        }
+
+        //Receber o valor do campo
         var password = document.querySelector("#password").value;
         // Verificar se o campo esta vazio
         if (password === "") {

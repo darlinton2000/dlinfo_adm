@@ -79,10 +79,15 @@ if (!defined('C8L6K7E')) {
                 </div>
 
                 <div class="view-det-adm">
-                    <span class="view-adm-title">Situação: </span>
+                    <span class="view-adm-title">Situação do Usuário: </span>
                     <span class="view-adm-info">
                         <?php echo "<span style='color: $color;'>$name_sit</span>" ?>
                     </span>
+                </div>
+
+                <div class="view-det-adm">
+                    <span class="view-adm-title">Nível de Acesso: </span>
+                    <span class="view-adm-info"><?php echo "<a href='" . URLADM . "view-access-levels/index/$id_lev'>" . $name_lev . "</a>"; ?></span>
                 </div>
 
                 <div class="view-det-adm">

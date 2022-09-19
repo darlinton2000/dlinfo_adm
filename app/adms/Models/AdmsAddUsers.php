@@ -120,7 +120,13 @@ class AdmsAddUsers
         $list->fullRead("SELECT id AS id_sit, name AS name_sit FROM adms_sits_users ORDER BY name ASC");
         $registry['sit'] = $list->getResult();
 
-        $this->listRegistryAdd = ['sit' => $registry['sit']];
+        $list->fullRead("SELECT id AS id_lev, name AS name_lev 
+                            FROM adms_access_levels
+                            WHERE order_levels >:order_levels 
+                            ORDER BY name ASC", "order_levels=" . $_SESSION['order_levels']);
+        $registry['lev'] = $list->getResult();
+
+        $this->listRegistryAdd = ['sit' => $registry['sit'], 'lev' => $registry['lev']];
 
         return $this->listRegistryAdd;
     }

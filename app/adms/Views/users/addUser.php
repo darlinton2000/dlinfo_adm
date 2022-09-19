@@ -75,6 +75,22 @@ if (isset($this->data['form'])) {
                         ?>
                         </select>
                     </div>
+                    <div class="column">
+                        <label class="title-input">Nível de Acesso:<span class="text-danger"> *</span></label>
+                        <select name="adms_access_level_id" id="adms_access_level_id" class="input-adm" required>
+                        <option value="">Selecione</option>
+                        <?php
+                        foreach ($this->data['select']['lev'] as $lev) {
+                            extract($lev);
+                            if ((isset($valorForm['adms_access_level_id'])) and ($valorForm['adms_access_level_id'] == $id_lev)) {
+                                echo "<option value='$id_lev' selected>$name_lev</option>";
+                            } else {
+                                echo "<option value='$id_lev'>$name_lev</option>";
+                            }
+                        }
+                        ?>
+                        </select>
+                    </div>
                 </div>
 
                 <p class="text-danger mb-5 fs-4">* Campo Obrigatório</p>
