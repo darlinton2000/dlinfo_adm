@@ -50,7 +50,11 @@ class AdmsEditUsersPassword
         $this->id = $id;
 
         $viewUser = new \App\adms\Models\helper\AdmsRead();
-        $viewUser->fullRead("SELECT id FROM adms_users WHERE id=:id LIMIT :limit", "id={$this->id}&limit=1");
+        $viewUser->fullRead("SELECT usr.id 
+                                FROM adms_users AS usr
+                                INNER JOIN adms_access_levels AS lev ON lev.id = usr.adms_access_level_id
+                                WHERE usr.id=:id AND lev.order_levels > :order_levels
+                                LIMIT :limit", "id={$this->id}&order_levels=" . $_SESSION['order_levels'] . "&limit=1");
 
         $this->resultBd = $viewUser->getResult();
         if ($this->resultBd){
