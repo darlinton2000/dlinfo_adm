@@ -20,6 +20,14 @@ if (isset($this->data['sidebarActive'])){
 
             <a href="<?php echo URLADM; ?>list-sits-users/index" class="sidebar-nav <?php if ($sidebar_active == "list-sits-users") { echo "active"; } ?>"><i class="icon fa-solid fa-user-check"></i><span>Situações do Usuário</span></a>
 
+            <a href="<?php echo URLADM; ?>list-sits-pages/index" class="sidebar-nav <?php if ($sidebar_active == "list-sits-pages") { echo "active"; } ?>"><i class="icon fa-solid fa-file-circle-question"></i><span>Situações de Página</span></a>
+
+            <a href="<?php echo URLADM; ?>list-groups-pages/index" class="sidebar-nav <?php if ($sidebar_active == "list-groups-pages") { echo "active"; } ?>"><i class="icon fa-solid fa-file-lines"></i><span>Grupos de Página</span></a>
+
+            <a href="<?php echo URLADM; ?>list-types-pages/index" class="sidebar-nav <?php if ($sidebar_active == "list-types-pages") { echo "active"; } ?>"><i class="icon fa-solid fa-file"></i><span>Tipos de Página</span></a>
+
+            <a href="<?php echo URLADM; ?>list-pages/index" class="sidebar-nav <?php if ($sidebar_active == "list-pages") { echo "active"; } ?>"><i class="icon fa-solid fa-file"></i><span>Página</span></a>
+
             <a href="<?php echo URLADM; ?>list-access-levels/index" class="sidebar-nav <?php if ($sidebar_active == "list-access-levels") { echo "active"; } ?>"><i class="icon fa-solid fa-key"></i><span>Nível de Acesso</span></a>
 
             <a href="<?php echo URLADM; ?>list-colors/index" class="sidebar-nav <?php if ($sidebar_active == "list-colors") { echo "active"; } ?>"><i class="icon fa-solid fa-palette"></i><span>Cores</span></a>
