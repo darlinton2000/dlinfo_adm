@@ -87,7 +87,7 @@ class CarregarPgAdm
      */
     private function pgPrivate(): void
     {
-        $this->listPgPrivate = ["Dashboard", "ListUsers", "ViewUsers", "AddUsers", "EditUsers", "EditUsersPassword", "EditUsersImage", "DeleteUsers", "ViewProfile", "EditProfile", "EditProfilePassword", "EditProfileImage", "ListSitsUsers", "ViewSitsUsers", "EditSitsUsers", "AddSitsUsers", "DeleteSitsUsers", "ListColors", "ViewColors", "EditColors", "AddColors", "DeleteColors", "ListConfEmails", "ViewConfEmails", "EditConfEmails", "AddConfEmails", "DeleteConfEmails", "EditConfEmailsPassword", "AddAccessLevels", "DeleteAccessLevels", "EditAccessLevels", "ListAccessLevels", "ViewAccessLevels", "AdmsAddAccessLevels", "AdmsDeleteAccessLevels", "AdmsEditAccessLevels", "AdmsListAccessLevels", "AdmsViewAccessLevels"];
+        $this->listPgPrivate = ["Dashboard", "ListUsers", "ViewUsers", "AddUsers", "EditUsers", "EditUsersPassword", "EditUsersImage", "DeleteUsers", "ViewProfile", "EditProfile", "EditProfilePassword", "EditProfileImage", "ListSitsUsers", "ViewSitsUsers", "EditSitsUsers", "AddSitsUsers", "DeleteSitsUsers", "ListColors", "ViewColors", "EditColors", "AddColors", "DeleteColors", "ListConfEmails", "ViewConfEmails", "EditConfEmails", "AddConfEmails", "DeleteConfEmails", "EditConfEmailsPassword", "AddAccessLevels", "DeleteAccessLevels", "EditAccessLevels", "ListAccessLevels", "ViewAccessLevels", "AdmsAddAccessLevels", "AdmsDeleteAccessLevels", "AdmsEditAccessLevels", "AdmsListAccessLevels", "AdmsViewAccessLevels", "OrderAccessLevels"];
 
         if (in_array($this->urlController, $this->listPgPrivate)){
             $this->verifyLogin();
