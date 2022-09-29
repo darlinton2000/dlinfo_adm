@@ -46,6 +46,10 @@ class ViewUsers
         }
     }
 
+    /**
+     * Instancia a classe responsável em carregar a VIEW e evniar os dados para a VIEW.
+     *
+     */
     private function viewUser(): void
     {   
         $this->data['sidebarActive'] = "list-users";

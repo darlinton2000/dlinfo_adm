@@ -4,13 +4,11 @@ if (!defined('C8L6K7E')) {
     header("Location: /");
     die("Erro: Página não encontrada<br>");
 }
-
 ?>
 
 <!-- Inicio do conteudo do administrativo -->
 <div class="wrapper">
     <div class="row">
-        
         <div class="top-list">
             <span class="title-content">Listar Usuários</span>
             <div class="top-list-right">
@@ -19,16 +17,14 @@ if (!defined('C8L6K7E')) {
                 ?>
             </div>
         </div>
-
         <div class="content-adm-alert">
             <?php
-                if (isset($_SESSION['msg'])) {
-                    echo $_SESSION['msg'];
-                    unset($_SESSION['msg']);
-                }
+            if (isset($_SESSION['msg'])) {
+                echo $_SESSION['msg'];
+                unset($_SESSION['msg']);
+            }
             ?>
         </div>
-
         <table class="table-list">
             <thead class="list-head">
                 <tr>
