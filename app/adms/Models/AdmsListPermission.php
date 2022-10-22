@@ -95,7 +95,7 @@ class AdmsListPermission
             $this->resultPg = $pagination->getResult();
 
             $listPermission = new \App\adms\Models\helper\AdmsRead();
-            $listPermission->fullRead("SELECT lev_pag.id, lev_pag.permission, lev_pag.order_level_page, lev_pag.adms_page_id,
+            $listPermission->fullRead("SELECT lev_pag.id, lev_pag.permission, lev_pag.order_level_page, adms_access_level_id, lev_pag.adms_page_id,
                                 pag.name_page
                                 FROM adms_levels_pages AS lev_pag
                                 LEFT JOIN adms_pages AS pag ON pag.id=adms_page_id
