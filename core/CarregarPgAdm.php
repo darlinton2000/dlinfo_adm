@@ -16,14 +16,19 @@ class CarregarPgAdm
 {
     /** @var string $urlController Recebe da URL o nome da controller */
     private string $urlController;
+
     /** @var string $urlMetodo Recebe da URL o nome do método */
     private string $urlMetodo;
+
     /** @var string $urlParameter Recebe da URL o parâmetro */
     private string $urlParameter;
+
     /** @var string $classLoad Controller que deve ser carregada */
     private string $classLoad;
+
     /** @var array $pgPublic Recebe o nome das páginas que são públicas */
     private array $listPgPublic;
+    
     /** @var array $listPgPrivate Recebe o nome das páginas que são privadas */
     private array $listPgPrivate;
 
