@@ -49,7 +49,7 @@ class CarregarPgAdmLevel
     }
 
     /**
-     * Verificando se existe a pagina no BD
+     * Verifica no banco de dados se existe a classe e o metodo
      * @return void
      */
     private function searchPage(): void
@@ -72,16 +72,15 @@ class CarregarPgAdmLevel
                 $this->verifyLogin();
             }
         } else {
-            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Página não encontrada!</p>";
+            /* $_SESSION['msg'] = "<p class='alert-danger'>Erro: Página não encontrada!</p>";
             $urlRedirect = URLADM . "login/index";
-            header("Location: $urlRedirect");
-            /* die("Erro - 006: Por favor tente novamente. Caso o problema persista, entre em contato com o administrador " . EMAILADM); */
+            header("Location: $urlRedirect"); */
+            die("Erro - 006: Por favor tente novamente. Caso o problema persista, entre em contato com o administrador " . EMAILADM);
         }
     }
 
     /**
-     * Verificar se existe o método e carregar a página
-     *
+     * Verificar se existe o metodo e carrega a pagina
      * @return void
      */
     private function loadMetodo(): void
@@ -96,8 +95,7 @@ class CarregarPgAdmLevel
     }
 
     /**
-     * Verificar se o usuário está logado e carregar a página
-     *
+     * Verificar se o usuario esta logado e carregar a pagina
      * @return void
      */
     private function verifyLogin(): void
@@ -112,6 +110,10 @@ class CarregarPgAdmLevel
         }
     }
 
+    /**
+     * Verifica no banco de dados se o nivel de acesso do usuario tem permissao de acessa a pagina
+     * @return void
+     */
     private function searchLevelPage(): void 
     {
         $searchLevelPage = new \App\adms\Models\helper\AdmsRead();

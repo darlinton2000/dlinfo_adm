@@ -14,12 +14,22 @@ if (!defined('C8L6K7E')) {
             <span class="title-content">Detalhes do Usuário</span>
             <div class="top-list-right">
                 <?php
-                echo "<a href='" . URLADM . "list-users/index' class='btn-info'>Listar</a> ";
+                if ($this->data['button']['list_users']){
+                    echo "<a href='" . URLADM . "list-users/index' class='btn-info'>Listar</a> ";
+                }
                 if (!empty($this->data['viewUser'])) {
-                    echo "<a href='" . URLADM . "edit-users/index/" . $this->data['viewUser'][0]['id'] . "' class='btn-warning'>Editar</a> ";
-                    echo "<a href='" . URLADM . "edit-users-password/index/" . $this->data['viewUser'][0]['id'] . "' class='btn-warning'>Editar Senha</a> ";
-                    echo "<a href='" . URLADM . "edit-users-image/index/" . $this->data['viewUser'][0]['id'] . "' class='btn-warning'>Editar Imagem</a> ";
-                    echo "<a href='" . URLADM . "delete-users/index/" . $this->data['viewUser'][0]['id'] . "' onclick='return confirm(\"Tem certeza que deseja excluir o registro?\")' class='btn-danger'>Apagar</a>";
+                    if ($this->data['button']['edit_users']) {
+                        echo "<a href='" . URLADM . "edit-users/index/" . $this->data['viewUser'][0]['id'] . "' class='btn-warning'>Editar</a> ";
+                    }
+                    if ($this->data['button']['edit_users_password']) {
+                        echo "<a href='" . URLADM . "edit_users_password/index/" . $this->data['viewUser'][0]['id'] . "' class='btn-warning'>Editar Senha</a> ";
+                    }
+                    if ($this->data['button']['edit_users_image']) {
+                        echo "<a href='" . URLADM . "edit-users-image/index/" . $this->data['viewUser'][0]['id'] . "' class='btn-warning'>Editar Imagem</a> ";
+                    }
+                    if ($this->data['button']['delete_users']) {
+                        echo "<a href='" . URLADM . "delete-users/index/" . $this->data['viewUser'][0]['id'] . "' onclick='return confirm(\"Tem certeza que deseja excluir este registro?\")' class='btn-danger'>Apagar</a> ";
+                    }
                 }
                 ?>
             </div>

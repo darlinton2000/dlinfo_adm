@@ -13,7 +13,9 @@ if (!defined('C8L6K7E')) {
             <span class="title-content">Listar Usuários</span>
             <div class="top-list-right">
                 <?php
-                echo "<a href='" . URLADM . "add-users/index' class='btn-success'>Cadastrar</a>";
+                if ($this->data['button']['add_users']){
+                    echo "<a href='" . URLADM . "add-users/index' class='btn-success'>Cadastrar</a>";
+                }
                 ?>
             </div>
         </div>
@@ -52,9 +54,15 @@ if (!defined('C8L6K7E')) {
                                 <button onclick="actionDropdown(<?php echo $id; ?>)" class="dropdown-btn-action">Ações</button>
                                 <div id="actionDropdown<?php echo $id; ?>" class="dropdown-action-item">
                                     <?php
-                                    echo "<a href='" . URLADM . "view-users/index/$id'>Visualizar</a>";
-                                    echo "<a href='" . URLADM . "edit-users/index/$id'>Editar</a>";
-                                    echo "<a href='" . URLADM . "delete-users/index/$id' onclick='return confirm(\"Tem certeza que deseja excluir este registro?\")'>Apagar</a>";
+                                    if ($this->data['button']['view_users']){
+                                        echo "<a href='" . URLADM . "view-users/index/$id'>Visualizar</a>";
+                                    }
+                                    if ($this->data['button']['edit_users']){
+                                        echo "<a href='" . URLADM . "edit-users/index/$id'>Editar</a>";
+                                    }
+                                    if ($this->data['button']['delete_users']){
+                                        echo "<a href='" . URLADM . "delete-users/index/$id' onclick='return confirm(\"Tem certeza que deseja excluir este registro?\")'>Apagar</a>";
+                                    }
                                     ?>
                                 </div>
                             </div>
