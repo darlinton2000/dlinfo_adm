@@ -42,7 +42,12 @@ class ListAccessLevels
         }
 
         $this->data['pag'] = $this->page;
-        $this->data['sidebarActive'] = "list-access-levels";         
+
+        $listMenu = new \App\adms\Models\helper\AdmsMenu();
+        $this->data['menu'] = $listMenu->itemMenu();
+
+        $this->data['sidebarActive'] = "list-access-levels"; 
+                
         $loadView = new \Core\ConfigView("adms/Views/accessLevels/listAccessLevels", $this->data);
         $loadView->loadView();
     }

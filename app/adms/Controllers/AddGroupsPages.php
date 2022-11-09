@@ -56,7 +56,11 @@ class AddGroupsPages
      */
     private function viewAddGroupsPages(): void
     { 
+        $listMenu = new \App\adms\Models\helper\AdmsMenu();
+        $this->data['menu'] = $listMenu->itemMenu();
+
         $this->data['sidebarActive'] = "list-groups-pages";
+        
         $loadView = new \Core\ConfigView("adms/Views/groupsPages/addGroupsPages", $this->data);
         $loadView->loadView();
     }

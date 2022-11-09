@@ -41,7 +41,11 @@ class ListSitsPages
             $this->data['listSitsPages'] = [];
         }
 
+        $listMenu = new \App\adms\Models\helper\AdmsMenu();
+        $this->data['menu'] = $listMenu->itemMenu();
+
         $this->data['sidebarActive'] = "list-sits-pages"; 
+        
         $loadView = new \Core\ConfigView("adms/Views/sitsPages/listSitPages", $this->data);
         $loadView->loadView();
     }

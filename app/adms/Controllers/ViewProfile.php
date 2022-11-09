@@ -36,6 +36,9 @@ class ViewProfile
 
     private function loadViewProfile(): void
     {   
+        $listMenu = new \App\adms\Models\helper\AdmsMenu();
+        $this->data['menu'] = $listMenu->itemMenu();
+        
         $loadView = new \Core\ConfigView("adms/Views/users/viewProfile", $this->data);
         $loadView->loadView();
     }

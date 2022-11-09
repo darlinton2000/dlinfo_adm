@@ -32,6 +32,9 @@ class Dashboard
             $this->data['countUsers'] = false;
         }
 
+        $listMenu = new \App\adms\Models\helper\AdmsMenu();
+        $this->data['menu'] = $listMenu->itemMenu();
+
         $this->data['sidebarActive'] = "dashboard";
 
         $loadView = new \Core\ConfigView("adms/Views/dashboard/dashboard", $this->data);

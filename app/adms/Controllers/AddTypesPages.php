@@ -56,7 +56,11 @@ class AddTypesPages
      */
     private function viewAddTypesPages(): void
     { 
+        $listMenu = new \App\adms\Models\helper\AdmsMenu();
+        $this->data['menu'] = $listMenu->itemMenu();
+
         $this->data['sidebarActive'] = "list-types-pages";
+        
         $loadView = new \Core\ConfigView("adms/Views/typesPages/addTypesPages", $this->data);
         $loadView->loadView();
     }

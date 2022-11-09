@@ -8,7 +8,7 @@ if (!defined('C8L6K7E')){
 }
 
 /**
- * Classe genérica para selecionar registro no banco de dados
+ * Classe
  *
  * @author Darlinton Luis Siqueira <darlinton2000@gmail.com>
  */

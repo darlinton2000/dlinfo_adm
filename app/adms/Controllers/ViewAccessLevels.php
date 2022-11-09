@@ -52,8 +52,12 @@ class ViewAccessLevels
      * 
      */
     private function viewAccessLevels(): void
-    {
+    {   
+        $listMenu = new \App\adms\Models\helper\AdmsMenu();
+        $this->data['menu'] = $listMenu->itemMenu();
+
         $this->data['sidebarActive'] = "list-access-levels"; 
+        
         $loadView = new \Core\ConfigView("adms/Views/accessLevels/viewAccessLevels", $this->data);
         $loadView->loadView();
     }

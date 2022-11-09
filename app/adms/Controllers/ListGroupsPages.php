@@ -42,7 +42,12 @@ class ListGroupsPages
         }
         
         $this->data['pag'] = $this->page;
+
+        $listMenu = new \App\adms\Models\helper\AdmsMenu();
+        $this->data['menu'] = $listMenu->itemMenu();
+
         $this->data['sidebarActive'] = "list-groups-pages"; 
+        
         $loadView = new \Core\ConfigView("adms/Views/groupsPages/listGroupsPages", $this->data);
         $loadView->loadView();
     }

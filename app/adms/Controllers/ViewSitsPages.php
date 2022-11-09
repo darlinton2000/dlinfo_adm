@@ -54,6 +54,9 @@ class ViewSitsPages
      */
     private function viewSitPages(): void
     {
+        $listMenu = new \App\adms\Models\helper\AdmsMenu();
+        $this->data['menu'] = $listMenu->itemMenu();
+        
         $this->data['sidebarActive'] = "list-sits-pages";
         $loadView = new \Core\ConfigView("adms/Views/sitsPages/viewSitPages", $this->data);
         $loadView->loadView();

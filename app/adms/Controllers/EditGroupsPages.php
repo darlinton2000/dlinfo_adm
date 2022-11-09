@@ -59,7 +59,11 @@ class EditGroupsPages
      */
     private function viewEditGroupsPages(): void
     { 
+        $listMenu = new \App\adms\Models\helper\AdmsMenu();
+        $this->data['menu'] = $listMenu->itemMenu();
+
         $this->data['sidebarActive'] = "list-groups-pages";
+        
         $loadView = new \Core\ConfigView("adms/Views/groupsPages/editGroupsPages", $this->data);
         $loadView->loadView();
     }

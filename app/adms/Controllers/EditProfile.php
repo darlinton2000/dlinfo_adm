@@ -52,6 +52,9 @@ class EditProfile
      */
     private function viewEditProfile(): void
     {   
+        $listMenu = new \App\adms\Models\helper\AdmsMenu();
+        $this->data['menu'] = $listMenu->itemMenu();
+        
         $loadView = new \Core\ConfigView("adms/Views/users/editProfile", $this->data);
         $loadView->loadView();
     }

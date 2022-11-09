@@ -32,6 +32,9 @@ class ListSitsUsers
             $this->data['listSitsUsers'] = [];
         }
 
+        $listMenu = new \App\adms\Models\helper\AdmsMenu();
+        $this->data['menu'] = $listMenu->itemMenu();
+        
         $this->data['sidebarActive'] = "list-sits-users";
 
         $loadView = new \Core\ConfigView("adms/Views/sitsUser/listSitUser", $this->data);

@@ -52,6 +52,9 @@ class EditProfilePassword
      */
     private function viewEditProfPass(): void
     {   
+        $listMenu = new \App\adms\Models\helper\AdmsMenu();
+        $this->data['menu'] = $listMenu->itemMenu();
+        
         $loadView = new \Core\ConfigView("adms/Views/users/editProfilePassword", $this->data);
         $loadView->loadView();
     }

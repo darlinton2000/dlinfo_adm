@@ -59,7 +59,11 @@ class EditAccessLevels
      */
     private function viewEditAccessLevels(): void
     {
+        $listMenu = new \App\adms\Models\helper\AdmsMenu();
+        $this->data['menu'] = $listMenu->itemMenu();
+
         $this->data['sidebarActive'] = "list-access-levels"; 
+        
         $loadView = new \Core\ConfigView("adms/Views/accessLevels/editAccessLevels", $this->data);
         $loadView->loadView();
     }

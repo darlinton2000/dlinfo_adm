@@ -48,6 +48,9 @@ class ViewSitsUsers
 
     private function viewSitUser(): void
     {   
+        $listMenu = new \App\adms\Models\helper\AdmsMenu();
+        $this->data['menu'] = $listMenu->itemMenu();
+        
         $this->data['sidebarActive'] = "list-sits-users";
         
         $loadView = new \Core\ConfigView("adms/Views/sitsUser/viewSitUser", $this->data);

@@ -42,7 +42,12 @@ class ListPages
         }
         
         $this->data['pag'] = $this->page;
+
+        $listMenu = new \App\adms\Models\helper\AdmsMenu();
+        $this->data['menu'] = $listMenu->itemMenu();
+
         $this->data['sidebarActive'] = "list-pages"; 
+        
         $loadView = new \Core\ConfigView("adms/Views/pages/listPages", $this->data);
         $loadView->loadView();
     }

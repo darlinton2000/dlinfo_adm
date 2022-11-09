@@ -54,6 +54,9 @@ class ViewGroupsPages
      */
     private function viewGroupsPages(): void
     {
+        $listMenu = new \App\adms\Models\helper\AdmsMenu();
+        $this->data['menu'] = $listMenu->itemMenu();
+        
         $this->data['sidebarActive'] = "list-groups-pages";
         $loadView = new \Core\ConfigView("adms/Views/groupsPages/viewGroupsPages", $this->data);
         $loadView->loadView();

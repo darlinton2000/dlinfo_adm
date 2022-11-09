@@ -63,6 +63,9 @@ class EditSitsPages
         $listSelect = new \App\adms\Models\AdmsEditSitsPages();
         $this->data['select'] = $listSelect->listSelect();
 
+        $listMenu = new \App\adms\Models\helper\AdmsMenu();
+        $this->data['menu'] = $listMenu->itemMenu();
+
         $this->data['sidebarActive'] = "list-sits-pages";
         $loadView = new \Core\ConfigView("adms/Views/sitsPages/editSitPages", $this->data);
         $loadView->loadView();
