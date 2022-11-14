@@ -8,11 +8,11 @@ if (!defined('C8L6K7E')){
 }
 
 /**
- * Editar permissao de acesso a pagina
+ * Models editar imprimir o item de menu
  *
  * @author Darlinton Luis Siqueira <darlinton2000@gmail.com>
  */
-class AdmsEditPermission
+class AdmsEditPrintMenu
 {
     /** @var bool $result Recebe true quando executar o processo com sucesso e false quando houver erro */
     private bool $result = false;
@@ -23,7 +23,7 @@ class AdmsEditPermission
     /** @var int|string|null $id Recebe o id do registro */
     private int|string|null $id;
 
-    /** @var array|null $data Recebe as informações do formulário */
+    /** @var array|null $data Recebe as informacoes que devem ser salvas no banco de dados */
     private array|null $data;
 
     /**
@@ -43,52 +43,55 @@ class AdmsEditPermission
     }
 
     /**
-     * Metodo recebe como parametro o ID que sera usado para verificar se tem o registro cadastrado no banco de dados
+     * Metodo que recebe como parametro o ID que sera usado para verificar se tem o registro cadastrado no banco de dados
+     *
      * @param integer $id
      * @return void
      */
-    public function editPermission(int $id): void
+    public function editPrintMenu(int $id): void
     {
         $this->id = $id;
 
-        $viewPermission = new \App\adms\Models\helper\AdmsRead();
-        $viewPermission->fullRead("SELECT lev_pag.id, lev_pag.permission FROM adms_levels_pages AS lev_pag 
+        $viewPrintMenu = new \App\adms\Models\helper\AdmsRead();
+        $viewPrintMenu->fullRead("SELECT lev_pag.id, lev_pag.print_menu 
+                                    FROM adms_levels_pages AS lev_pag
                                     INNER JOIN adms_access_levels AS lev ON lev.id=lev_pag.adms_access_level_id 
-                                    WHERE lev_pag.id=:id AND lev.order_levels >:order_levels
+                                    WHERE lev_pag.id=:id 
+                                    AND lev.order_levels >= :order_levels
                                     LIMIT :limit", "id={$this->id}&order_levels=".$_SESSION['order_levels']."&limit=1");
 
-        $this->resultBd = $viewPermission->getResult();
+        $this->resultBd = $viewPrintMenu->getResult();
         if ($this->resultBd){
             $this->edit();
         } else {
-            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Necessário selecionar uma página válida!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Necessário selecionar um item de menu!</p>";
             $this->result = false;
         }   
     }
 
     /**
-     * Metodo para alterar a permissao no banco de dados.
+     * Metodo para alterar o item do mundo no banco de dados.
      * Retorna TRUE quando editar no banco de dados.
      * Retorna FALSE se houver algum erro.
      * @return void
      */
     private function edit(): void
     {
-        if ($this->resultBd[0]['permission'] == 1){
-            $this->data['permission'] = 2;
+        if ($this->resultBd[0]['print_menu'] == 1){
+            $this->data['print_menu'] = 2;
         } else {
-            $this->data['permission'] = 1;
+            $this->data['print_menu'] = 1;
         }
         $this->data['modified'] = date("Y-m-d H:i:s");
 
-        $upPermission = new \App\adms\Models\helper\AdmsUpdate();
-        $upPermission->exeUpdate("adms_levels_pages", $this->data, "WHERE id=:id", "id={$this->id}");
+        $upPrintMenu = new \App\adms\Models\helper\AdmsUpdate();
+        $upPrintMenu->exeUpdate("adms_levels_pages", $this->data, "WHERE id=:id", "id={$this->id}");
 
-        if ($upPermission->getResult()) {
-            $_SESSION['msg'] = "<p class='alert-success'>Permissão editada com sucesso!</p>";
+        if ($upPrintMenu->getResult()) {
+            $_SESSION['msg'] = "<p class='alert-success'>Item de menu editado com sucesso!</p>";
             $this->result = true;
         } else {
-            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Permissão não editada com sucesso!</p>";
+            $_SESSION['msg'] = "<p class='alert-danger'>Erro: Item de menu não editado com sucesso!</p>";
             $this->result = false;
         }
     }

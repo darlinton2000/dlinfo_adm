@@ -95,7 +95,7 @@ if (isset($this->data['form'][0])) {
                         }
                         ?>
                         <label class="title-input">Classe no menu:<span class="text-danger">*</span></label>
-                        <input type="text" name="menu_controller" id="menu_controller" class="input-adm" placeholder="Nome da classe no menu" value="<?php echo $metodo; ?>" required>
+                        <input type="text" name="menu_controller" id="menu_controller" class="input-adm" placeholder="Nome da classe no menu" value="<?php echo $menu_controller; ?>" required>
 
                     </div>
                     <div class="column">

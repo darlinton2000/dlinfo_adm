@@ -31,7 +31,7 @@ class AdmsListPermission
     private int $level;
 
     /** @var int $page Recebe a quantidade de registros que deve retornar do banco de dados */
-    private int $limitResult = 10;
+    private int $limitResult = 40;
 
     /** @var string|null $page Recebe a páginação */
     private string|null $resultPg;
@@ -95,7 +95,7 @@ class AdmsListPermission
             $this->resultPg = $pagination->getResult();
 
             $listPermission = new \App\adms\Models\helper\AdmsRead();
-            $listPermission->fullRead("SELECT lev_pag.id, lev_pag.permission, lev_pag.order_level_page, adms_access_level_id, lev_pag.adms_page_id,
+            $listPermission->fullRead("SELECT lev_pag.id, lev_pag.permission, lev_pag.order_level_page, lev_pag.print_menu, adms_access_level_id, lev_pag.adms_page_id,
                                 pag.name_page
                                 FROM adms_levels_pages AS lev_pag
                                 LEFT JOIN adms_pages AS pag ON pag.id=adms_page_id
@@ -127,7 +127,7 @@ class AdmsListPermission
         $viewAccessLevels = new \App\adms\Models\helper\AdmsRead();
         $viewAccessLevels->fullRead("SELECT name
                                 FROM adms_access_levels 
-                                WHERE id=:id AND order_levels >:order_levels
+                                WHERE id=:id AND order_levels >= :order_levels
                                 LIMIT :limit", "id={$this->level}&order_levels=" . $_SESSION['order_levels'] . "&limit=1");
 
         $this->resultBdLevel = $viewAccessLevels->getResult();
