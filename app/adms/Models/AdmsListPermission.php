@@ -87,21 +87,33 @@ class AdmsListPermission
             $pagination = new \App\adms\Models\helper\AdmsPagination(URLADM . 'list-permission/index', "?level={$this->level}");
             $pagination->condition($this->page, $this->limitResult);
             $pagination->pagination(
-                "SELECT COUNT(id) AS num_result 
-                                    FROM adms_levels_pages
-                                    WHERE adms_access_level_id =:adms_access_level_id",
+                "SELECT COUNT(lev_pag.id) AS num_result 
+                        FROM adms_levels_pages AS lev_pag
+                        LEFT JOIN adms_pages AS pag ON pag.id=lev_pag.adms_page_id 
+                        WHERE lev_pag.adms_access_level_id =:adms_access_level_id
+                        AND (((SELECT permission 
+                        FROM adms_levels_pages 
+                        WHERE adms_page_id = lev_pag.adms_page_id 
+                        AND adms_access_level_id = {$_SESSION['adms_access_level_id']}) = 1) 
+                        OR (publish = 1))",
                 "adms_access_level_id={$this->level}"
             );
             $this->resultPg = $pagination->getResult();
 
             $listPermission = new \App\adms\Models\helper\AdmsRead();
-            $listPermission->fullRead("SELECT lev_pag.id, lev_pag.permission, lev_pag.order_level_page, lev_pag.print_menu, adms_access_level_id, lev_pag.adms_page_id,
-                                pag.name_page
-                                FROM adms_levels_pages AS lev_pag
-                                LEFT JOIN adms_pages AS pag ON pag.id=adms_page_id
-                                WHERE lev_pag.adms_access_level_id =:adms_access_level_id
-                                ORDER BY lev_pag.order_level_page ASC
-                                LIMIT :limit OFFSET :offset", "adms_access_level_id={$this->level}&limit={$this->limitResult}&offset={$pagination->getOffset()}");
+            $listPermission->fullRead("SELECT lev_pag.id, lev_pag.permission, lev_pag.order_level_page, lev_pag.print_menu, lev_pag.adms_access_level_id, lev_pag.adms_page_id,
+                                            pag.name_page
+                                            FROM adms_levels_pages AS lev_pag
+                                            LEFT JOIN adms_pages AS pag ON pag.id=adms_page_id
+                                            INNER JOIN adms_access_levels AS lev ON lev.id=lev_pag.adms_access_level_id 
+                                            WHERE lev_pag.adms_access_level_id =:adms_access_level_id
+                                            AND lev.order_levels >=:order_levels
+                                            AND (((SELECT permission 
+                                            FROM adms_levels_pages
+                                            WHERE adms_page_id = lev_pag.adms_page_id
+                                            AND adms_access_level_id = {$_SESSION['adms_access_level_id']}) = 1) OR (publish = 1))
+                                            ORDER BY lev_pag.order_level_page ASC
+                                            LIMIT :limit OFFSET :offset", "adms_access_level_id={$this->level}&order_levels=" . $_SESSION['order_levels'] . "&limit={$this->limitResult}&offset={$pagination->getOffset()}");
 
             $this->resultBd = $listPermission->getResult();
             if ($this->resultBd) {

@@ -108,7 +108,7 @@ body {
     right: 0;
     top: 100%;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-    background-color: var(--main-bg-color);
+    background-color: var(--default-color);
     width: 280px;
     border-radius: 7px;
     display: none;

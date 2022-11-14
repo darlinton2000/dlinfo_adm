@@ -22,7 +22,7 @@ if (!defined('C8L6K7E')) {
             <span>Usuários</span>
         </div>
 
-        <!-- <div class="box box-second">
+        <div class="box box-second">
             <span class="fa-solid fa-truck-ramp-box"></span>
             <span>43</span>
             <span>Entregas</span>
@@ -38,7 +38,7 @@ if (!defined('C8L6K7E')) {
             <span class="fa-solid fa-triangle-exclamation"></span>
             <span>3</span>
             <span>Alertas</span>
-        </div> -->
+        </div>
     </div>
 
 </div>
