@@ -155,7 +155,7 @@ class AdmsSyncPagesLevels
     private function addLevelPermission(): void
     {
         $this->searchLastOrder();
-        $this->dataLevelPage['permission'] = (($this->levelId == 1) OR ($this->publish) ? 1 : 2);
+        $this->dataLevelPage['permission'] = (($this->levelId == 1) OR ($this->publish == 1) ? 1 : 2);
         $this->dataLevelPage['order_level_page'] = $this->resultBdLastOrder[0]['order_level_page'] + 1;
         $this->dataLevelPage['adms_access_level_id'] = $this->levelId;
         $this->dataLevelPage['adms_page_id'] = $this->pageId;

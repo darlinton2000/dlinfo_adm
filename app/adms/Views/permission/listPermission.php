@@ -68,6 +68,7 @@ if (!defined('C8L6K7E')) {
                                 <button onclick="actionDropdown(<?php echo $id; ?>)" class="dropdown-btn-action">Ações</button>
                                 <div id="actionDropdown<?php echo $id; ?>" class="dropdown-action-item">
                                     <?php
+                                    echo "<a href='" . URLADM . "order-page-menu/index/$id?&level=$adms_access_level_id&pag=" . $this->data['pag'] . "'><i class='fa-solid fa-angles-up'></i> Ordem</a>";
                                     /* echo "<a href='" . URLADM . "order-access-levels/index/$id?pag=".$this->data['pag']."'><i class='fa-solid fa-angles-up'></i> Ordem</a>";
                                     echo "<a href='" . URLADM . "list-permission/index?level=$id'><i class='fa-solid fa-house-lock'></i> Permissão</a>";
                                     echo "<a href='" . URLADM . "view-access-levels/index/$id'><i class='fa-solid fa-eye'></i> Visualizar</a>";
