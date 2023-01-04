@@ -17,6 +17,9 @@ class AdmsNewUser
     /** @var array|null $data Recebe as informações do formulário */
     private array|null $data;
 
+    /** @var array|null $resultBd Recebe os registros do banco de dados */
+    private array|null $resultBd;
+
     /** @var bool $result Recebe true quando executar o processo com sucesso e false quando houver erro */
     private bool $result;
 
@@ -103,20 +106,49 @@ class AdmsNewUser
      */
     private function add(): void
     {
-        $this->data['password'] = password_hash($this->data['password'], PASSWORD_DEFAULT);
-        $this->data['user'] = $this->data['email'];
-        $this->data['conf_email'] = password_hash($this->data['password'] . date("Y-m-d H:i:s"), PASSWORD_DEFAULT);
-        $this->data['created'] = date("Y-m-d H:i:s");
+        if ($this->accessLevel()){
+            $this->data['password'] = password_hash($this->data['password'], PASSWORD_DEFAULT);
+            $this->data['user'] = $this->data['email'];
+            $this->data['conf_email'] = password_hash($this->data['password'] . date("Y-m-d H:i:s"), PASSWORD_DEFAULT);
+            $this->data['created'] = date("Y-m-d H:i:s");
 
-        $createUser = new \App\adms\Models\helper\AdmsCreate();
-        $createUser->exeCreate("adms_users", $this->data);
+            $createUser = new \App\adms\Models\helper\AdmsCreate();
+            $createUser->exeCreate("adms_users", $this->data);
 
-        if ($createUser->getResult()) {
-            $this->sendEmail();
+            if ($createUser->getResult()) {
+                $this->sendEmail();
+            } else {
+                $_SESSION['msg'] = "<p class='alert-danger'>Erro: Usuário não cadastrado com sucesso!</p>";
+                $this->result = false;
+            }
         } else {
             $_SESSION['msg'] = "<p class='alert-danger'>Erro: Usuário não cadastrado com sucesso!</p>";
             $this->result = false;
         }
+        
+    }
+
+    /** 
+     * Pesquisar no banco de dados o nivel de acesso e a situacao que deve ser utilizada no formulario cadastrar usuario na pagina de login
+     * Retorna TRUE quando encontrar o registro
+     * Retorna FALSE quando nao encontrar o registro
+     * 
+     * @return bool
+     */ 
+    private function accessLevel(): bool
+    {
+        $viewAccessLevel = new \App\adms\Models\helper\AdmsRead();
+        $viewAccessLevel->fullRead("SELECT adms_access_level_id, adms_sits_user_id FROM adms_levels_forms ORDER BY id ASC LIMIT :limit", "limit=1");
+        $this->resultBd = $viewAccessLevel->getResult();
+
+        if ($this->resultBd){
+            $this->data['adms_access_level_id'] = $this->resultBd[0]['adms_access_level_id'];
+            $this->data['adms_sits_user_id'] = $this->resultBd[0]['adms_sits_user_id'];
+            return true;
+        } else {
+            return false;
+        }
+
     }
 
     private function sendEmail(): void
@@ -125,7 +157,7 @@ class AdmsNewUser
         $this->contentEmailText();
 
         $sendEmail = new \App\adms\Models\helper\AdmsSendEmail();
-        $sendEmail->sendEmail($this->emailData, 2);
+        $sendEmail->sendEmail($this->emailData, 1);
 
         if ($sendEmail->getResult()){
             $_SESSION['msg'] = "<p class='alert-success'>Usuário cadastrado com sucesso. Acesse a sua caixa de e-mail para confirmar o e-mail!</p>";

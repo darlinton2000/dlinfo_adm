@@ -43,6 +43,9 @@ class AdmsDeleteAccessLevels
         $this->id = (int) $id;
 
         if ($this->viewAccessLevel()) {
+            /* $deleteLevelPages = new \App\adms\Models\helper\AdmsDelete();
+            $deleteLevelPages->exeDelete("adms_levels_pages", "WHERE adms_access_level_id =:adms_access_level_id", "adms_access_level_id={$this->id}"); */
+
             $deleteAccessLevel = new \App\adms\Models\helper\AdmsDelete();
             $deleteAccessLevel->exeDelete("adms_access_levels", "WHERE id =:id", "id={$this->id}");
 

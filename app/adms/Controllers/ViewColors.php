@@ -20,7 +20,10 @@ class ViewColors
     private int|string|null $id;
 
     /**
-     * Instanciar a classe responsável em carregar a View e enviar os dados para View.
+     * Metodo visualizar cor
+     * Recebe como parametro o ID que sera usado para pesquisar as informações no banco de dados e instacia a MODELS admsViewColors
+     * Se encontrar o registro no banco de dados envia para a VIEW
+     * Se não é redirecionado para o listar cores
      *
      * @return void
      */
