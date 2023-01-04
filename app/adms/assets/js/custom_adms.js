@@ -224,6 +224,29 @@ if (formEditUser) {
     });
 }
 
+const formEditLevelForm = document.getElementById("form-edit-level-form");
+if (formEditLevelForm) {
+    formEditLevelForm.addEventListener("submit", async(e) => {
+        //Receber o valor do campo
+        var adms_sits_user_id = document.querySelector("#adms_sits_user_id").value;
+        // Verificar se o campo esta vazio
+        if (adms_sits_user_id === "") {
+            e.preventDefault();
+            document.getElementById("msg").innerHTML = "<p class='alert-danger'>Erro: Necessário preencher o campo situação!</p>";
+            return;
+        }
+
+        //Receber o valor do campo
+        var adms_access_level_id = document.querySelector("#adms_access_level_id").value;
+        // Verificar se o campo esta vazio
+        if (adms_access_level_id === "") {
+            e.preventDefault();
+            document.getElementById("msg").innerHTML = "<p class='alert-danger'>Erro: Necessário preencher o campo nível de acesso!</p>";
+            return;
+        }
+    });
+}
+
 const formEditUserPass = document.getElementById("form-edit-user-pass");
 if (formEditUserPass) {
     formEditUserPass.addEventListener("submit", async(e) => {
