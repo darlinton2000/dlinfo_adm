@@ -38,7 +38,7 @@ Tela de Dashboard
 
 ![02 - Tela de Dashboard](https://user-images.githubusercontent.com/46008964/219246216-5ad51e56-f141-4778-b76a-b340bea5463f.png)
 
-03 - Tela Cadastrar Usuário
+Tela Cadastrar Usuário
 
 ![03 - Tela Cadastrar Usuário](https://user-images.githubusercontent.com/46008964/219248203-adb3493f-3711-4b49-aab5-0ef77bb55ae5.png)
 
