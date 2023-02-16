@@ -32,3 +32,7 @@ Após as alterações, reinicie o servidor e teste se carregar o GD.
 Tela de Login 
 
 ![01 - Tela de Login](https://user-images.githubusercontent.com/46008964/219245247-d4e2739d-178e-4a38-bd5f-2738ac78ee01.png)
+
+Tela de Dashboard
+
+![02 - Tela de Dashboard](https://user-images.githubusercontent.com/46008964/219246216-5ad51e56-f141-4778-b76a-b340bea5463f.png)
