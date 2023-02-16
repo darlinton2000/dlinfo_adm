@@ -1,8 +1,9 @@
-<h2>Sistema de Gestão de Dados - DLInfo ADM</h2>
+<h2>Sistema Administrativo DLInfo</h2>
 
-Linguagem de programação: PHP 8.1.5<br>
-Banco de Dados: MariaDB<br>
-Bibliotecas: PHPMailer 6.6.3<br>
+Linguagem de programação: PHP 8.1.5<br/>
+Arquitetura: MVC<br/>
+Banco de Dados: MariaDB<br/>
+Bibliotecas: PHPMailer 6.6.3<br/>
 
 <hr>
 
